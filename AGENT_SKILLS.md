@@ -26,7 +26,7 @@ This file records the intended design/tooling stack for Ventablk Agency OS. A re
 - Purpose: frontend art direction, distinctive design execution, and visual self-review.
 - Install the official skill package into the coding agent(s) you use:
   ```bash
-  npx skills add https://github.com/Leonxlnx/taste-skill
+  npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend
   ```
 - Its documented main skill install name is `design-taste-frontend`. Follow the upstream README for runtime/browser requirements and agent compatibility.
 
