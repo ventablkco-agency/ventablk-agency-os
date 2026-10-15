@@ -38,7 +38,7 @@ test("detects framework and never runs project scripts",async()=>{
 test("skips dependencies and build folders and omits environment-file contents",async()=>{
   const root=await mkdtemp(join(tmpdir(),"ventablk-scan-"));
   try{
-    const dir=await makeRepo(root,"site",{packageJson:{name:"safe-site"},extras:["node_modules/","dist/",".env"]});
+    const dir=await makeRepo(root,"site",{packageJson:{name:"safe-site"},extras:["node_modules/","dist/",".env","index.html"]});
     await makeRepo(join(dir,"node_modules"),"nested-dependency",{packageJson:{name:"must-not-appear"}});
     await writeFile(join(dir,".env"),"SECRET_DO_NOT_EMIT=very-secret");
     const result=await scanRepositories({root});
@@ -65,7 +65,7 @@ test("allowlists project metadata and omits contact and financial data",async()=
 test("ignores malformed optional metadata without aborting scan",async()=>{
   const root=await mkdtemp(join(tmpdir(),"ventablk-scan-"));
   try{
-    const dir=await makeRepo(root,"site",{packageJson:{name:"safe-site"}});
+    const dir=await makeRepo(root,"site",{packageJson:{name:"safe-site"},extras:["index.html"]});
     await writeFile(join(dir,"ventablk.project.json"),"{broken");
     const result=await scanRepositories({root});
     assert.equal(result.summary.repositoriesFound,1);
