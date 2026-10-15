@@ -3,6 +3,14 @@
 **Primary format:** A4 portrait PDF  
 **Visual reference:** Owner-provided minimalist black invoice and editorial-style invoice examples
 
+## 0. Confirmed agency branding
+
+- **Invoice display name:** `ventablk.co`
+- **Descriptor:** `AGENCY`
+- **Logo asset:** Agency owner supplied a combined image containing both white-on-black and black-on-white wordmarks. Use the white version for the dark invoice and the black version for the light/print-friendly variant.
+- **Brand name confirmation:** The owner confirmed the invoice should use the same agency name shown in the logo.
+- **Next asset task:** Extract/use clean logo variants from the supplied image for production-quality invoice output; do not use the full two-panel reference image as the logo itself.
+
 ## 1. Design direction
 
 Create a premium, minimal invoice for a modern web design and development agency. The design should feel deliberate and high-end, with strong typography, precise alignment, generous negative space, thin separators, and a restrained visual system.
