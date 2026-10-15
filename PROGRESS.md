@@ -25,13 +25,23 @@ Finish the laptop-only agency dashboard foundation and establish a repeatable de
 - [x] Updated dashboard instructions to keep phone access out of current scope.
 - [x] Preserved the rule that the public repository must not contain real client records, secrets, credentials, patient information, or private invoices.
 
+## Dashboard implementation status
+
+- [x] Existing client and project create/edit/search workflows retained.
+- [x] Added task/deadline management with status filters, due dates, and editing.
+- [x] Added lead pipeline management with stage, estimated value, and follow-up tracking.
+- [x] Added invoice/payment tracking with amount validation, outstanding balance calculations, and client/project association checks.
+- [x] Added maintenance plan management with recurring fees, next billing dates, and active/inactive state.
+- [x] Added authenticated JSON export for all operational records and workspace settings/backup guidance.
+- [x] Added selected JSON manifest import and linked navigation for the management pages.
+- [x] Added shared form styling, responsive adjustments, visible focus states, and reduced-motion handling.
+
 ## Not yet verified
 
-- [ ] Skills have **not yet been installed into the laptop's coding-agent environment**. The repository documents the upstream installation commands; run them locally and verify they are discovered by the chosen agent.
-- [ ] Playwright MCP configuration has been committed but has **not yet been started or verified in VS Code**.
-- [ ] Docker image build and dashboard runtime have not been tested.
-- [ ] Dashboard CRUD forms, backup/export, stronger authentication, and reminders remain future implementation work.
-- [ ] The dashboard pull request remains unmerged until local testing passes.
+- [ ] The complete new dashboard bundle has not yet been rebuilt or browser-tested on the laptop. The user confirmed the previous importer build/test worked; that does not prove the new pages compile.
+- [ ] Playwright MCP configuration has not been verified as running in VS Code.
+- [ ] Automated reminders, automated scheduled backups, and stronger session-based authentication are not implemented.
+- [ ] The dashboard pull request remains unmerged until the new bundle is rebuilt and key workflows are tested locally.
 
 ## Working agreements
 
