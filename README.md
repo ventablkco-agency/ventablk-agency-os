@@ -19,6 +19,13 @@ This repository documents the repeatable processes and reusable standards for `v
 - [Website project blueprint](WEBSITE_PROJECT_BLUEPRINT.md)
 - [Default website architecture](DEFAULT_WEBSITE_ARCHITECTURE.md) — approval still pending.
 - [Website reference library](WEBSITE_REFERENCE_LIBRARY.md) — add owner-supplied optimization repositories and UI/animation links here.
+- [Project documentation pack](templates/project-docs/README.md) — six required documents and lifecycle for every substantial website/app project.
+- [Product Requirements template](templates/project-docs/PRODUCT_REQUIREMENTS.md)
+- [Technical Requirements template](templates/project-docs/TECHNICAL_REQUIREMENTS.md)
+- [Application Flow template](templates/project-docs/APP_FLOW.md)
+- [Design Brief template](templates/project-docs/DESIGN_BRIEF.md)
+- [Backend Schema template](templates/project-docs/BACKEND_SCHEMA.md)
+- [Implementation Plan template](templates/project-docs/IMPLEMENTATION_PLAN.md)
 
 ## Agency dashboard
 
