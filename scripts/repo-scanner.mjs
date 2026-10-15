@@ -37,6 +37,24 @@ function explicit(raw) {
   const cn=str(c.name,120), org=str(c.organization,160), pn=str(p.name,160), web=str(p.websiteUrl,500), host=str(p.hosting,120), status=str(p.status,40).toUpperCase();
   return {client:cn||org ? {name:cn||null,organization:org||null} : null,project:{name:pn||null,websiteUrl:/^https?:\/\//i.test(web)?web:null,hosting:host||null,status:STATUSES.has(status)?status:null}};
 }
+function safeRepositoryUrl(remote) {
+  if (!remote) return null;
+  let candidate = remote.trim();
+  const scpStyle = candidate.match(/^git@([^:]+):(.+)$/i);
+  const sshStyle = candidate.match(/^ssh:\/\/(?:git@)?([^/]+)\/(.+)$/i);
+  if (scpStyle) candidate = "https://" + scpStyle[1] + "/" + scpStyle[2];
+  else if (sshStyle) candidate = "https://" + sshStyle[1] + "/" + sshStyle[2];
+  try {
+    const url = new URL(candidate);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    url.username = "";
+    url.password = "";
+    url.search = "";
+    url.hash = "";
+    url.pathname = url.pathname.replace(/\\.git$/i, "").replace(/\\/+$/, "");
+    return url.toString().replace(/\\/+$/, "");
+  } catch { return null; }
+}
 function framework(pkg) {
   const d={...(pkg?.dependencies&&typeof pkg.dependencies==="object"?pkg.dependencies:{}),...(pkg?.devDependencies&&typeof pkg.devDependencies==="object"?pkg.devDependencies:{})};
   if(d.astro)return "Astro"; if(d.next)return "Next.js"; if(d["@angular/core"])return "Angular";
@@ -47,7 +65,7 @@ async function inspect(repo,root) {
   const entries=await readdir(repo,{withFileTypes:true}), names=new Set(entries.map(e=>e.name));
   const pkg=await jsonFile(join(repo,"package.json"),256*1024);
   const custom=explicit(await jsonFile(join(repo,"ventablk.project.json"),32*1024));
-  const remote=git(repo,["remote","get-url","origin"]), branch=git(repo,["branch","--show-current"]), commit=git(repo,["rev-parse","--short=12","HEAD"]);
+  const remoteRaw=git(repo,["remote","get-url","origin"]), remote=safeRepositoryUrl(remoteRaw), branch=git(repo,["branch","--show-current"]), commit=git(repo,["rev-parse","--short=12","HEAD"]);
   const valid=pkg&&typeof pkg==="object"&&!Array.isArray(pkg), packageName=valid?str(pkg.name,180):"";
   const dir=relative(root,repo).split(sep).join("/");
   const hosting=[], ci=[];
