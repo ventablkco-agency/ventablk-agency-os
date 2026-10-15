@@ -23,13 +23,16 @@ async function makeRepo(root, relativePath, options = {}) {
 test("detects framework and never runs project scripts",async()=>{
   const root=await mkdtemp(join(tmpdir(),"ventablk-scan-"));
   try{
-    await makeRepo(root,"astro-site",{packageJson:{name:"sample-web",dependencies:{astro:"1"},scripts:{build:"echo SHOULD_NOT_RUN"}}});
+    await makeRepo(root,"astro-site",{remote:"https://scanner-user:secret-token@github.com/example/astro-site.git?token=should-not-leak",packageJson:{name:"sample-web",dependencies:{astro:"1"},scripts:{build:"echo SHOULD_NOT_RUN"}}});
     const result=await scanRepositories({root});
     assert.equal(result.summary.repositoriesFound,1);
     assert.equal(result.repositories[0].framework,"Astro");
     assert.equal(result.repositories[0].name,"sample-web");
     assert.equal(result.safety.ranProjectScripts,false);
     assert.equal(result.repositories[0].needsClientMapping,true);
+    assert.equal(result.repositories[0].repositoryUrl,"https://github.com/example/astro-site");
+    assert.equal(JSON.stringify(result).includes("secret-token"),false);
+    assert.equal(JSON.stringify(result).includes("should-not-leak"),false);
   }finally{await rm(root,{recursive:true,force:true});}
 });
 test("skips dependencies and build folders and omits environment-file contents",async()=>{
