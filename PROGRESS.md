@@ -39,6 +39,8 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - [x] Added `INVOICE_TEMPLATE_SPEC.md` defining the invoice layout, payment section, QR verification, PDF export, and required information before real invoices can be issued.
 - [x] Confirmed invoice display branding as `ventablk.co` with the `AGENCY` descriptor; owner supplied white and black logo variants.
 - [x] Created first visual invoice mockup with placeholders; no live payment QR or unverified bank details are presented as real.
+- [x] Generated downloadable A4 PDF invoice template: `ventablk_invoice_template.pdf` (placeholder fields only).
+- [x] Added reusable responsive/printable HTML invoice template at `invoice-template.html` in the agency OS repository.
 - [x] Added `WEBSITE_REFERENCE_LIBRARY.md` to collect optimization repositories, UI components, animation references, and design tools supplied by the agency owner.
 - [ ] Audit the existing Siddaganga Hospital repository before extracting reusable website components.
 
