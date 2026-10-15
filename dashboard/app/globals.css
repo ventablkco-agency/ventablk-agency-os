@@ -184,3 +184,10 @@ footer{font-size:11px;line-height:1.5}
 .mapping-select-label{display:block;min-width:240px}
 .mapping-select-label select{width:100%}
 .client-form .primary-button:disabled{opacity:.45;cursor:not-allowed}
+
+.bulk-mapping-tools{display:grid;gap:8px;padding:12px 14px;margin-bottom:12px;background:#f7f9fc;border:1px solid var(--line);border-radius:9px}
+.bulk-mapping-tools>label{font-size:13px;font-weight:700;color:#526074}
+.bulk-mapping-tools>div{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.bulk-mapping-tools select{width:min(100%,360px);min-width:220px;border:1px solid #dfe5ec;border-radius:8px;padding:11px 12px;background:#fff;color:var(--ink);font:400 14px 'DM Sans',sans-serif}
+.bulk-mapping-tools .secondary-button{font-size:13px}
+@media(max-width:700px){.bulk-mapping-tools>div{align-items:stretch;flex-direction:column}.bulk-mapping-tools select{width:100%;min-width:0}.bulk-mapping-tools button{align-self:flex-start}}
