@@ -35,6 +35,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Sea
       where: {
         ...(query ? { OR: [
           { name: { contains: query, mode: "insensitive" } },
+          { framework: { contains: query, mode: "insensitive" } },
           { client: { name: { contains: query, mode: "insensitive" } } },
           { client: { organization: { contains: query, mode: "insensitive" } } },
         ] } : {}),
@@ -87,7 +88,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Sea
             {projects.length ? <div className="client-table-wrap"><table className="client-table">
               <thead><tr><th>Project</th><th>Client</th><th>Status</th><th>Due date</th><th>Budget</th><th><span className="sr-only">Actions</span></th></tr></thead>
               <tbody>{projects.map((project) => <tr key={project.id}>
-                <td><div className="table-client"><span className="client-avatar">▦</span><span><strong>{project.name}</strong><small>{project._count.tasks} tasks</small></span></div></td>
+                <td><div className="table-client"><span className="client-avatar">▦</span><span><strong>{project.name}</strong><small>{project.framework ? project.framework + " · " : ""}{project._count.tasks} tasks</small>{project.lastScannedAt && <small>Scanned {project.lastScannedAt.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</small>}</span></div></td>
                 <td><span className="table-contact">{project.client.organization || project.client.name}</span><small className="table-subcontact">{project.client.name}</small></td>
                 <td><span className={"status status-" + project.status.toLowerCase()}>{statusLabels[project.status] ?? project.status}</span></td>
                 <td><span className="table-date">{project.dueDate ? project.dueDate.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "Not set"}</span></td>
