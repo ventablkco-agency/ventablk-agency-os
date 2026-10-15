@@ -171,6 +171,14 @@ export async function importRepositoryInventory(formData: FormData) {
     let createdClients = 0;
     let skippedConflicts = 0;
     for (const record of records) {
+      let existingProject = await tx.project.findFirst({ where: { sourceId: record.sourceId } });
+      if (!existingProject && record.repositoryUrl) {
+        const withRepository = await tx.project.findMany({ where: { repositoryUrl: { not: null } } });
+        existingProject = withRepository.find((candidate) =>
+          candidate.repositoryUrl && normalizeRepositoryUrl(candidate.repositoryUrl) === normalizeRepositoryUrl(record.repositoryUrl)
+        ) || null;
+      }
+
       let clientId: string;
       if (record.mapping === "__create__") {
         const name = record.metadataClient?.name || record.metadataClient?.organization || "";
@@ -182,6 +190,10 @@ export async function importRepositoryInventory(formData: FormData) {
           },
           orderBy: { createdAt: "asc" },
         });
+        if (existingProject && (!existingClient || existingProject.clientId !== existingClient.id)) {
+          skippedConflicts += 1;
+          continue;
+        }
         const client = existingClient || await tx.client.create({ data: { name, organization } });
         if (!existingClient) createdClients += 1;
         clientId = client.id;
@@ -189,14 +201,10 @@ export async function importRepositoryInventory(formData: FormData) {
         const existingClient = await tx.client.findUnique({ where: { id: record.mapping }, select: { id: true } });
         if (!existingClient) throw new Error("Selected client does not exist; refresh the import page and retry.");
         clientId = existingClient.id;
-      }
-
-      let existingProject = await tx.project.findFirst({ where: { sourceId: record.sourceId } });
-      if (!existingProject && record.repositoryUrl) {
-        const withRepository = await tx.project.findMany({ where: { repositoryUrl: { not: null } } });
-        existingProject = withRepository.find((candidate) =>
-          candidate.repositoryUrl && normalizeRepositoryUrl(candidate.repositoryUrl) === normalizeRepositoryUrl(record.repositoryUrl)
-        ) || null;
+        if (existingProject && existingProject.clientId !== clientId) {
+          skippedConflicts += 1;
+          continue;
+        }
       }
 
       const websiteUrl = record.metadataProject?.websiteUrl || null;
