@@ -1,6 +1,6 @@
 # VentaBlk Co. — Progress Tracker
 
-Last updated: 2026-10-15
+Last updated: 2026-10-16
 
 ## Current goal
 
@@ -20,6 +20,10 @@ Finish the laptop-only agency dashboard and remove repetitive data entry through
 - [x] Updated dashboard typography and corrected Contact name label/required-marker markup.
 - [x] Added AUTOMATION_ROADMAP.md for local discovery, reconciliation and proposed task-template workflows.
 - [x] Made the five listed design/QA resources mandatory review gates in AGENTS.md and skills/ventablk-website-workflow/SKILL.md. Manual fallbacks are required when upstream tools are unavailable; no tool run may be claimed without evidence.
+- [x] Added six reusable project document templates: PRD, technical requirements, application flow, design brief, backend schema, and implementation plan under templates/project-docs/.
+- [x] Added templates/project-docs/README.md describing when and how the six documents must be completed, approved, kept in sync, and stored in client repositories.
+- [x] Updated AGENTS.md, the website workflow skill and repository README to require the six-document pack before substantial website implementation.
+- [x] AGENT_SKILLS.md already contains the official Taste Skill, Impeccable, and Vercel Web Design Guidelines setup commands, plus the Playwright MCP setup/check guidance; the workflow now explicitly requires checking availability and using that guide.
 - [x] Added a Node.js website-repository scanner at scripts/repo-scanner.mjs and tests at scripts/repo-scanner.test.mjs.
 - [x] Scanner examines Git metadata, package manifests and top-level names only; identifies likely website repositories, excludes the Agency OS checkout itself, sanitizes remote URLs and never runs project scripts or reads environment/credential contents.
 - [x] Added a local inventory preview and batch import UI at dashboard/app/import/bulk-import-form.tsx, preserving the existing single-manifest flow.
@@ -36,6 +40,7 @@ Finish the laptop-only agency dashboard and remove repetitive data entry through
 - [ ] Run the scanner against ~/web-dev and review the generated inventory before importing.
 - [ ] Test first import and second repeated import, existing-project updates, new-client metadata creation, bulk client mapping and cross-client conflict handling in the local dashboard.
 - [ ] Verify Playwright MCP and external skill tools actually start in VS Code. Their repository instructions alone do not install them.
+- [ ] Copy the six document templates into the next client's private website repository and complete them from confirmed requirements; the templates are not client-specific approved documents yet.
 
 ## Next implementation after verification
 
