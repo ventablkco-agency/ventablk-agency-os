@@ -16,7 +16,7 @@ export default function ClientForm({ client }: { client?: ClientFormValues }) {
       {client?.id && <input type="hidden" name="id" value={client.id} />}
       <div className="form-grid">
         <label>
-          Contact name <span aria-hidden="true">*</span>
+          <span className="field-label">Contact name <span aria-hidden="true">*</span></span>
           <input name="name" required maxLength={120} defaultValue={client?.name ?? ""} autoComplete="name" />
         </label>
         <label>
