@@ -43,6 +43,7 @@ export default function BulkImportForm({ clients, projects }: { clients: ClientO
   const [inventory, setInventory] = useState<Inventory | null>(null);
   const [mappings, setMappings] = useState<Record<string, string>>({});
   const [fileName, setFileName] = useState("");
+  const [bulkDefaultClient, setBulkDefaultClient] = useState("");
   const [error, setError] = useState("");
 
   async function selectFile(file?: File) {
@@ -98,6 +99,15 @@ export default function BulkImportForm({ clients, projects }: { clients: ClientO
     }
   }
 
+  function applyDefaultClientToUnmapped() {
+    if (!bulkDefaultClient || !inventory) return;
+    setMappings((current) => {
+      const next = { ...current };
+      for (const item of inventory.repositories) if (!next[item.sourceId]) next[item.sourceId] = bulkDefaultClient;
+      return next;
+    });
+  }
+
   const allMapped = Boolean(inventory && inventory.repositories.length > 0 &&
     inventory.repositories.every((item) => Boolean(mappings[item.sourceId])));
   const payload = inventory ? JSON.stringify(inventory) : "";
@@ -116,7 +126,18 @@ export default function BulkImportForm({ clients, projects }: { clients: ClientO
             Found {inventory.repositories.length} repositories under {inventory.scanRoot}. Review the proposed client mapping for every repository before applying. {inventory.errors?.length ? ` The scan also reported ${inventory.errors.length} folder access errors.` : ""}
           </div>
           {inventory.repositories.length === 0 ? <p className="empty">No Git repositories were found in this inventory.</p> : (
-            <div className="bulk-preview-wrap">
+            <>
+              <div className="bulk-mapping-tools">
+                <label htmlFor="bulk-default-client">Assign one client to all currently unmapped repositories</label>
+                <div>
+                  <select id="bulk-default-client" value={bulkDefaultClient} onChange={(event) => setBulkDefaultClient(event.target.value)}>
+                    <option value="">Choose client to apply…</option>
+                    {clients.map((client) => <option key={client.id} value={client.id}>{client.organization || client.name}{client.organization ? " — " + client.name : ""}</option>)}
+                  </select>
+                  <button type="button" className="secondary-button" onClick={applyDefaultClientToUnmapped} disabled={!bulkDefaultClient}>Apply to unmapped</button>
+                </div>
+              </div>
+              <div className="bulk-preview-wrap">
               <table className="bulk-preview-table">
                 <thead><tr><th>Repository</th><th>Detected stack</th><th>Client mapping</th></tr></thead>
                 <tbody>
@@ -158,7 +179,8 @@ export default function BulkImportForm({ clients, projects }: { clients: ClientO
                   })}
                 </tbody>
               </table>
-            </div>
+              </div>
+            </>
           )}
           <input type="hidden" name="inventoryJson" value={payload} />
           <input type="hidden" name="mappingsJson" value={JSON.stringify(mappings)} />
