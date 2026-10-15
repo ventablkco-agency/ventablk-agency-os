@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { ProjectStatus } from "@prisma/client";
 import ProjectForm from "./project-form";
 
 export const dynamic = "force-dynamic";
@@ -9,7 +10,7 @@ const statusLabels: Record<string, string> = {
   DISCOVERY: "Discovery", DESIGN: "Design", CONTENT: "Content", DEVELOPMENT: "Development",
   QA: "Quality check", LAUNCH: "Launch", MAINTENANCE: "Maintenance", ON_HOLD: "On hold", COMPLETED: "Completed",
 };
-const statuses = Object.keys(statusLabels);
+const statuses = Object.keys(statusLabels) as ProjectStatus[];
 const errors: Record<string, string> = {
   "name-required": "Enter a project name.",
   "client-required": "Choose a client for this project.",
@@ -36,7 +37,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Sea
           { client: { name: { contains: query, mode: "insensitive" } } },
           { client: { organization: { contains: query, mode: "insensitive" } } },
         ] } : {}),
-        ...(status ? { status: status as (typeof statuses)[number] } : {}),
+        ...(status ? { status: status as ProjectStatus } : {}),
       },
       include: { client: true, _count: { select: { tasks: true } } },
       orderBy: [{ updatedAt: "desc" }],
