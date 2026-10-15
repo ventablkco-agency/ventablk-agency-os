@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readdir, readFile, mkdir, writeFile, stat } from "node:fs/promises";
+import { readdir, readFile, mkdir, writeFile, stat, chmod } from "node:fs/promises";
 import { basename, dirname, join, relative, resolve, sep } from "node:path";
 import { homedir } from "node:os";
 import { spawnSync } from "node:child_process";
@@ -110,7 +110,7 @@ async function main() {
   const o=argsFrom(process.argv.slice(2));
   if(o.help){process.stdout.write("Usage: node scripts/repo-scanner.mjs [--root ~/web-dev] [--out ~/ventablk-repository-inventory.json] [--exclude PATH]\n");return;}
   const result=await scanRepositories({root:o.root,excludes:[...o.excludes,o.out]});
-  await mkdir(dirname(o.out),{recursive:true}); await writeFile(o.out,JSON.stringify(result,null,2)+"\n",{mode:0o600});
+  await mkdir(dirname(o.out),{recursive:true}); await writeFile(o.out,JSON.stringify(result,null,2)+"\n",{mode:0o600}); await chmod(o.out,0o600).catch(()=>{});
   process.stdout.write("Found "+result.summary.repositoriesFound+" repositories; "+result.summary.repositoriesNeedingClientMapping+" need client mapping; "+result.summary.scanErrors+" scan errors.\nInventory written to "+o.out+"\n");
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href)main().catch(e=>{process.stderr.write((e instanceof Error?e.message:"Scan failed")+"\n");process.exitCode=1;});
