@@ -28,6 +28,16 @@ Each invoice should contain the applicable legally required details and, at mini
 
 Tax, GST registration, invoice format, e-invoicing, and record-retention obligations depend on the agency's legal/tax circumstances. Confirm these with a qualified accountant; this checklist is not tax advice.
 
+## 2A. Invoice visual direction (based on owner-provided references)
+
+- **Design direction:** Premium, minimalist, typography-led invoice inspired by the two references supplied by the agency owner.
+- **Preferred layout:** Strong VentaBlk wordmark at the top, clear invoice title and number, issue/due dates, bill-to details, a clean itemized table, aligned subtotal/tax/total/balance, and a dedicated payment section near the bottom.
+- **Visual treatment:** A dark/black version with crisp light typography is the leading direction; keep contrast strong and the layout calm, readable, and print-friendly.
+- **Practicality:** Use A4 portrait as the primary PDF format; test on a phone and on paper. Avoid tiny terms, crowded footers, and decorative graphics that compete with the amount due.
+- **Branding:** Use the actual approved VentaBlk logo and brand assets. Do not use the reference studios' names, logos, contact details, or invented bank data.
+- **Payment section:** Show the approved bank transfer details, UPI ID if supplied, a verified QR code, the exact invoice amount/reference, and a text fallback. The QR must be tested after final PDF export.
+- **Tax and currency:** Use INR by default for Indian clients, and apply tax lines only after the agency's accountant confirms the correct treatment.
+
 ## 3. QR payment requirement
 
 **Requirement:** Where practical, include a QR code on invoices so the client can scan it to initiate payment directly.
@@ -43,6 +53,12 @@ Before using it:
 8. Reconcile the actual received payment and issue a receipt/paid confirmation as appropriate.
 
 Never store banking passwords, card details, secret keys, or private payment credentials in GitHub. A QR image and public payment address are not a substitute for checking payment settlement.
+
+### UPI QR implementation note
+
+A static UPI QR can open a compatible payment app and prefill the payee and, when supported by the chosen QR format, the amount/reference. The exact behavior depends on the app and payment flow; do not promise that every app will behave identically. Use a valid UPI payment URI/QR from a trusted, verified source and test across commonly used apps. Never generate a QR from an unverified or guessed UPI ID.
+
+Payment fees and rules can change. As of 15 October 2026, public reporting says a proposed merchant-fee framework for some higher-value UPI person-to-merchant payments has been postponed; confirm current applicability and charges directly with the business's bank/payment provider before choosing a QR arrangement. A direct bank-account UPI QR avoids payment-gateway platform fees, but it should not be described as guaranteed fee-free in every merchant scenario.
 
 ## 4. Monthly website maintenance billing workflow
 
