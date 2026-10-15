@@ -14,7 +14,7 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - Direct write access was verified through successful commits.
 - `CLIENT_LIFECYCLE.md` has been committed, fetched, and explicitly approved by the agency owner as the working process.
 - Agency logo was provided in the conversation but is not yet committed as a repository asset.
-- Repository visibility was previously observed as public. Confirm current visibility and make it private before adding internal or commercially sensitive material.
+- Repository visibility was verified as **public** on 2026-10-15. Make it private before adding real client-specific or commercially sensitive information. The client-information file in this repo is a blank reusable template only.
 
 ## Completed
 
@@ -30,8 +30,10 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - [x] Created `WEBSITE_TECHNICAL_STANDARD.md` and received approval as the agency-wide production baseline.
 - [x] Added `CLIENT_INFORMATION_TEMPLATE.md` to keep client-confirmed hospital/project facts in one reusable record.
 - [x] Added `WEBSITE_PROJECT_BLUEPRINT.md` as the starting implementation structure and technical workflow (draft awaiting review).
-- [ ] Review and approve `WEBSITE_PROJECT_BLUEPRINT.md`; then define the default architecture and form-service choices for the next project.
-- [ ] Create reusable onboarding, proposal, approval, handover, maintenance, and offboarding templates.
+- [x] Received explicit approval of `WEBSITE_PROJECT_BLUEPRINT.md`.
+- [x] Created `DEFAULT_WEBSITE_ARCHITECTURE.md` defining the default stack approach and a decision tree for static sites, enquiry forms, careers uploads, appointment workflows, and sensitive health data.
+- [x] Created `DECISIONS.md` to record durable agency-wide decisions.
+- [ ] Review and approve `DEFAULT_WEBSITE_ARCHITECTURE.md`; then select a form-service approach based on actual client requirements, cost, privacy, and reliability.
 - [ ] Audit the existing Siddaganga Hospital repository before extracting reusable website components.
 
 ## Working agreements
@@ -47,7 +49,7 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 
 ## Current blocker / caution
 
-The repository was previously observed as public. Confirm visibility before adding internal or commercially sensitive material.
+The repository is currently public. Change it to private before adding real client records, proposals, internal pricing, or commercially sensitive material.
 
 ## Exact next step
 
