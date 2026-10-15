@@ -27,7 +27,8 @@ const inr = (value: number | null) => value === null ? "Not set" : new Intl.Numb
 export default async function ProjectsPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
   const query = (params.q ?? "").trim().slice(0, 100);
-  const status = statuses.includes(params.status ?? "") ? params.status! : "";
+  const requestedStatus = params.status ?? "";
+  const status = statuses.includes(requestedStatus as ProjectStatus) ? requestedStatus as ProjectStatus : "";
   const editingId = params.edit ?? "";
   const [projects, clients, editingProject] = await Promise.all([
     prisma.project.findMany({
