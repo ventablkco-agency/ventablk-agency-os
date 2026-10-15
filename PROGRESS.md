@@ -26,8 +26,11 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 
 ## In progress
 
-- [ ] Create `design.md` as the canonical design specification for hospital websites, including responsive behavior and design handoff rules.
-- [ ] Decide the standard website architecture, including frontend, forms, backend, notifications, storage, and privacy.
+- [x] Created and received approval for `design.md` as the canonical design specification for hospital websites.
+- [x] Created `WEBSITE_TECHNICAL_STANDARD.md` and received approval as the agency-wide production baseline.
+- [x] Added `CLIENT_INFORMATION_TEMPLATE.md` to keep client-confirmed hospital/project facts in one reusable record.
+- [x] Added `WEBSITE_PROJECT_BLUEPRINT.md` as the starting implementation structure and technical workflow (draft awaiting review).
+- [ ] Review and approve `WEBSITE_PROJECT_BLUEPRINT.md`; then define the default architecture and form-service choices for the next project.
 - [ ] Create reusable onboarding, proposal, approval, handover, maintenance, and offboarding templates.
 - [ ] Audit the existing Siddaganga Hospital repository before extracting reusable website components.
 
@@ -48,4 +51,4 @@ The repository was previously observed as public. Confirm visibility before addi
 
 ## Exact next step
 
-Create `design.md` as a practical design specification for hospital websites. Keep it focused on reusable design rules, responsive layouts, accessibility, content/assets, and approval requirements. Review it with the agency owner before treating it as final.
+Review `WEBSITE_PROJECT_BLUEPRINT.md` and approve or request changes. Before adding real client information, verify the agency OS repository visibility and set appropriate private access. For each hospital project, copy `CLIENT_INFORMATION_TEMPLATE.md` into that client’s repository and fill it only with client-confirmed, non-sensitive information.
