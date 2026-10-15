@@ -34,6 +34,8 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - [x] Created `DEFAULT_WEBSITE_ARCHITECTURE.md` defining the default stack approach and a decision tree for static sites, enquiry forms, careers uploads, appointment workflows, and sensitive health data.
 - [x] Created `DECISIONS.md` to record durable agency-wide decisions.
 - [ ] Review and approve `DEFAULT_WEBSITE_ARCHITECTURE.md`; then select a form-service approach based on actual client requirements, cost, privacy, and reliability.
+- [x] Added `BILLING_AND_MAINTENANCE_BILLING.md` to define invoicing, monthly maintenance invoices, QR payment verification, reminders, and reconciliation.
+- [x] Added `WEBSITE_REFERENCE_LIBRARY.md` to collect optimization repositories, UI components, animation references, and design tools supplied by the agency owner.
 - [ ] Audit the existing Siddaganga Hospital repository before extracting reusable website components.
 
 ## Working agreements
