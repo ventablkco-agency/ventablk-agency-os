@@ -35,10 +35,12 @@ Finish the laptop-only agency dashboard foundation and establish a repeatable de
 - [x] Added authenticated JSON export for all operational records and workspace settings/backup guidance.
 - [x] Added selected JSON manifest import and linked navigation for the management pages.
 - [x] Added shared form styling, responsive adjustments, visible focus states, and reduced-motion handling.
+- [x] Added a GitHub Actions workflow to install dependencies, generate Prisma Client, and run a production build on dashboard changes.
 
 ## Not yet verified
 
 - [ ] The complete new dashboard bundle has not yet been rebuilt or browser-tested on the laptop. The user confirmed the previous importer build/test worked; that does not prove the new pages compile.
+- [ ] The newly added GitHub Actions build workflow has not yet reported a result for this bundle.
 - [ ] Playwright MCP configuration has not been verified as running in VS Code.
 - [ ] Automated reminders, automated scheduled backups, and stronger session-based authentication are not implemented.
 - [ ] The dashboard pull request remains unmerged until the new bundle is rebuilt and key workflows are tested locally.
