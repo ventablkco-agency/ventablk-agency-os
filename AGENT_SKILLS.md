@@ -49,6 +49,10 @@ This file records the intended design/tooling stack for Ventablk Agency OS. A re
   `npx @playwright/mcp@latest`.
 - Use only for authorized testing of the local projects and websites. Do not use it to access private third-party systems or expose local development servers publicly.
 
+## Mandatory use on every website project
+
+These are required project workflow gates, not optional recommendations. Start from the repository root and read skills/ventablk-website-workflow/SKILL.md. For substantial visual work, consult a relevant VoltAgent reference, run Taste Skill and Impeccable when installed, run Vercel Web Design Guidelines for UI, and use Playwright MCP for real flows when connected. For small maintenance changes, still apply the relevant design, guideline, and browser checks. Record each gate as Executed, Manual review, or Not run in the task report. Never claim upstream tool execution without observable results. If an upstream tool is unavailable, use the agency-owned manual checklist in the workflow and clearly report that limitation.
+
 ## Recommended use sequence
 
 1. Read the project's brief and existing implementation.
