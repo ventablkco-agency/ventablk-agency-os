@@ -35,6 +35,7 @@ export default async function ImportPage({ searchParams }: { searchParams: Searc
           <Link className="nav-item" href="/invoices"><span>₹</span> Billing</Link>
           <Link className="nav-item" href="/maintenance"><span>⟳</span> Maintenance</Link>
           <Link className="nav-item active" href="/import" aria-current="page"><span>⇧</span> Import repository</Link>
+          <Link className="nav-item" href="/settings"><span>⚙</span> Workspace settings</Link>
         </nav>
         <div className="sidebar-bottom"><span className="status-dot" /> Private workspace <small>Local database · Docker</small></div>
       </aside>
