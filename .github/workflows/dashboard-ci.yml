@@ -4,6 +4,12 @@ on:
   pull_request:
     paths:
       - "dashboard/**"
+      - "scripts/**"
+      - "AGENTS.md"
+      - "AGENT_SKILLS.md"
+      - "skills/**"
+      - "AUTOMATION_ROADMAP.md"
+      - "PROGRESS.md"
       - ".github/workflows/dashboard-ci.yml"
   push:
     branches:
@@ -33,6 +39,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Test local repository scanner
+        working-directory: .
+        run: node --test scripts/repo-scanner.test.mjs
       - name: Install dependencies
         run: npm install
       - name: Generate Prisma client
