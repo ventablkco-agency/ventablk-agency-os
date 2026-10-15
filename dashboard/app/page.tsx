@@ -34,7 +34,7 @@ export default async function DashboardPage() {
         <div className="nav-label">WORKSPACE</div>
         <nav>
           <a className="nav-item active" href="#overview"><span>◫</span> Overview</a>
-          <a className="nav-item" href="#clients"><span>♧</span> Clients</a>
+          <Link className="nav-item" href="/clients"><span>♧</span> Clients</Link>
           <a className="nav-item" href="#projects"><span>▦</span> Projects</a>
           <a className="nav-item" href="#tasks"><span>☑</span> Tasks & deadlines</a>
           <a className="nav-item" href="#leads"><span>↗</span> Leads</a>
@@ -67,7 +67,7 @@ export default async function DashboardPage() {
             {overdueTasks > 0 && <div className="notice">{overdueTasks} task(s) may be overdue. Review deadlines.</div>}
           </section>
 
-          <section className="panel" id="clients"><div className="panel-heading"><div><h3>Recent clients</h3><p>Relationships at the centre of the work.</p></div><span className="panel-count">{clients.length} shown</span></div>
+          <section className="panel" id="clients"><div className="panel-heading"><div><h3>Recent clients</h3><p>Relationships at the centre of the work.</p></div><Link className="table-action" href="/clients">Manage clients →</Link></div>
             {clients.length ? <div className="client-list">{clients.map((client) => <div className="client-row" key={client.id}><div className="client-avatar">{(client.organization || client.name).slice(0, 1).toUpperCase()}</div><div><strong>{client.organization || client.name}</strong><span>{client.email || client.name}</span></div><span className="client-arrow">↗</span></div>)}</div> : <div className="empty"><span>♧</span><strong>Your client list starts here</strong><p>Add client records in the next build stage.</p></div>}
           </section>
 
