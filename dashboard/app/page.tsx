@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
+// This page reads live PostgreSQL records and must render at request time,
+// not during the Docker image build when DATABASE_URL is unavailable.
+export const dynamic = "force-dynamic";
+
 const inr = (value: number) =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(value);
 
