@@ -73,3 +73,13 @@ test("ignores malformed optional metadata without aborting scan",async()=>{
     assert.equal(result.repositories[0].explicitProjectMetadata,null);
   }finally{await rm(root,{recursive:true,force:true});}
 });
+
+test("skips Git repositories without website indicators",async()=>{
+  const root=await mkdtemp(join(tmpdir(),"ventablk-scan-"));
+  try{
+    await makeRepo(root,"utility-script",{packageJson:{name:"utility-script",scripts:{test:"node test.js"}}});
+    const result=await scanRepositories({root});
+    assert.equal(result.summary.repositoriesFound,0);
+    assert.equal(result.summary.nonWebsiteRepositoriesSkipped,1);
+  }finally{await rm(root,{recursive:true,force:true});}
+});
