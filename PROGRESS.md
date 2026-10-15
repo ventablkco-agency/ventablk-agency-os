@@ -11,21 +11,24 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - Repository: `ventablkco-agency/ventablk-agency-os`
 - Default branch: `main`
 - GitHub integration installation is configured for all repositories under the account.
-- A write test succeeded: `README.md` was committed on 2026-10-15.
+- Write access was verified by committing `README.md` and subsequent documentation files.
+- `CLIENT_LIFECYCLE.md` is committed as a draft and was fetched from GitHub to verify its contents.
 - Agency logo was provided in the conversation; it has not yet been committed as a repository asset.
-- The repository was reported as public during setup. Review visibility and make it private before adding internal or commercially sensitive material.
+- Repository visibility was previously observed as public. Confirm its current visibility and make it private before adding internal or commercially sensitive material.
 
 ## Completed
 
 - [x] Confirmed the agency operating-system repository exists.
 - [x] Verified repository access and successfully committed `README.md`.
-- [x] Established this progress file as the persistent session handoff.
-- [x] Agreed to work in small steps and avoid overwhelming the user with large batches of tasks.
+- [x] Added this progress tracker as the persistent session handoff.
+- [x] Agreed to work in small steps and keep user-facing updates focused.
+- [x] Created `CLIENT_LIFECYCLE.md` as a draft covering lead qualification through offboarding.
+- [x] Fetched `CLIENT_LIFECYCLE.md` from GitHub to verify the commit.
 
 ## In progress
 
-- [ ] Review and agree on the end-to-end client lifecycle.
-- [ ] Create and review `design.md` as the canonical design specification.
+- [ ] Review and approve the client lifecycle draft with the agency owner.
+- [ ] Review `design.md` as the canonical design specification; refine it after the lifecycle is agreed.
 - [ ] Decide the standard website architecture, including frontend, forms, backend, notifications, storage, and privacy.
 - [ ] Create reusable onboarding, proposal, approval, handover, maintenance, and offboarding templates.
 - [ ] Audit the existing Siddaganga Hospital repository before extracting reusable website components.
@@ -43,8 +46,8 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 
 ## Current blocker / caution
 
-Direct GitHub writes now work for at least one file, as demonstrated by the README commit. Repository visibility was previously public; confirm its current visibility before adding internal documentation.
+The lifecycle is a draft, not yet approved. Repository visibility was previously observed as public; confirm current visibility before adding internal documentation.
 
 ## Exact next step
 
-Create `CLIENT_LIFECYCLE.md` as a concise draft of the complete journey from first lead to client offboarding. Review it with the user before treating the process as approved or building later templates around it.
+Ask the agency owner to review `CLIENT_LIFECYCLE.md`. Capture only the requested corrections, update the draft, and mark it approved only after explicit confirmation. Do not start the next system until the lifecycle is agreed.
