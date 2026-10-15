@@ -15,7 +15,7 @@ Use this workflow whenever planning, building, auditing, or improving a Ventablk
 - Never imply ChatGPT can see the user's local filesystem or browser without a verified connection.
 - Never claim a tool, skill, build, test, or deployment ran unless its execution and result are observable.
 
-## Required context before editing
+## Skill application requirement\n\nAt the start of every substantial website task, read this file and the relevant repository playbooks. Treat the documented methods as mandatory review gates, not optional name-drops. Apply the agency-owned checklists even when the original upstream tool is unavailable. Distinguish clearly between (a) an upstream skill/MCP that actually ran and (b) a manual review guided by its principles. Do not claim that ChatGPT has installed or permanently learned an external skill.\n\n## Required context before editing
 
 1. Identify the target repository, branch, framework, deployment target, and exact scope.
 2. Read root `AGENTS.md`, `PROGRESS.md`, `DECISIONS.md`, `design.md`, and `WEBSITE_TECHNICAL_STANDARD.md` as relevant.
