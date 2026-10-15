@@ -36,10 +36,10 @@ export default async function DashboardPage() {
           <a className="nav-item active" href="#overview"><span>◫</span> Overview</a>
           <Link className="nav-item" href="/clients"><span>♧</span> Clients</Link>
           <Link className="nav-item" href="/projects"><span>▦</span> Projects</Link>
-          <a className="nav-item" href="#tasks"><span>☑</span> Tasks & deadlines</a>
-          <a className="nav-item" href="#leads"><span>↗</span> Leads</a>
-          <a className="nav-item" href="#finance"><span>₹</span> Billing</a>
-          <a className="nav-item" href="#maintenance"><span>⟳</span> Maintenance</a>
+          <Link className="nav-item" href="/tasks"><span>☑</span> Tasks &amp; deadlines</Link>
+          <Link className="nav-item" href="/leads"><span>↗</span> Leads</Link>
+          <Link className="nav-item" href="/invoices"><span>₹</span> Billing</Link>
+          <Link className="nav-item" href="/maintenance"><span>⟳</span> Maintenance</Link>
           <Link className="nav-item" href="/import"><span>⇧</span> Import repository</Link>
         </nav>
         <div className="sidebar-bottom"><span className="status-dot" /> Private workspace <small>Local database · Docker</small></div>
@@ -63,7 +63,7 @@ export default async function DashboardPage() {
             {projects.length ? <div className="project-list">{projects.map((project) => <div className="project-row" key={project.id}><div className="project-symbol">{project.client.organization?.slice(0, 1) || project.client.name.slice(0, 1)}</div><div className="project-info"><strong>{project.name}</strong><span>{project.client.organization || project.client.name}</span></div><span className={"status status-" + project.status.toLowerCase()}>{projectLabels[project.status] || project.status}</span><div className="progress-track"><i style={{ width: project.status === "COMPLETED" ? "100%" : project.status === "LAUNCH" ? "88%" : project.status === "QA" ? "78%" : project.status === "DEVELOPMENT" ? "60%" : project.status === "CONTENT" ? "40%" : project.status === "DESIGN" ? "25%" : "12%" }} /></div></div>)}</div> : <div className="empty"><span>▦</span><strong>No projects yet</strong><p>Your projects will appear here once records are added.</p></div>}
           </section>
 
-          <section className="panel" id="tasks"><div className="panel-heading"><div><h3>Next actions</h3><p>Tasks and deadlines to stay ahead of.</p></div><span className="panel-count">{tasks.length} open</span></div>
+          <section className="panel" id="tasks"><div className="panel-heading"><div><h3>Next actions</h3><p>Tasks and deadlines to stay ahead of.</p></div><Link className="table-action" href="/tasks">Manage tasks →</Link></div>
             {tasks.length ? <div className="task-list">{tasks.map((task) => <div className="task-row" key={task.id}><span className={"task-check " + (task.dueDate && task.dueDate < now ? "late" : "")}></span><div><strong>{task.title}</strong><span>{task.project.name} · {task.project.client.name}</span></div><time className={task.dueDate && task.dueDate < now ? "late-text" : ""}>{task.dueDate ? task.dueDate.toLocaleDateString("en-IN", { day: "numeric", month: "short" }) : "No due date"}</time></div>)}</div> : <div className="empty"><span>☑</span><strong>Nothing urgent right now</strong><p>Tasks assigned to projects will show up here.</p></div>}
             {overdueTasks > 0 && <div className="notice">{overdueTasks} task(s) may be overdue. Review deadlines.</div>}
           </section>
@@ -72,14 +72,14 @@ export default async function DashboardPage() {
             {clients.length ? <div className="client-list">{clients.map((client) => <div className="client-row" key={client.id}><div className="client-avatar">{(client.organization || client.name).slice(0, 1).toUpperCase()}</div><div><strong>{client.organization || client.name}</strong><span>{client.email || client.name}</span></div><span className="client-arrow">↗</span></div>)}</div> : <div className="empty"><span>♧</span><strong>Your client list starts here</strong><p>Add client records in the next build stage.</p></div>}
           </section>
 
-          <section className="panel" id="leads"><div className="panel-heading"><div><h3>Lead pipeline</h3><p>Potential work to follow up.</p></div><span className="panel-count">{leads.length} active</span></div>
+          <section className="panel" id="leads"><div className="panel-heading"><div><h3>Lead pipeline</h3><p>Potential work to follow up.</p></div><Link className="table-action" href="/leads">Manage leads →</Link></div>
             {leads.length ? <div className="lead-list">{leads.map((lead) => <div className="lead-row" key={lead.id}><div><strong>{lead.organization}</strong><span>{lead.contactName || lead.service || "New opportunity"}</span></div><span className={"lead-stage stage-" + lead.status.toLowerCase()}>{lead.status.replaceAll("_", " ")}</span>{lead.nextFollowUp && <time>{lead.nextFollowUp.toLocaleDateString("en-IN", { day: "numeric", month: "short" })}</time>}</div>)}</div> : <div className="empty"><span>↗</span><strong>No open leads recorded</strong><p>Keep prospects and follow-ups together here.</p></div>}
           </section>
         </div>
 
         <div className="bottom-grid">
-          <section className="mini-panel" id="finance"><div className="mini-icon amber">₹</div><div><h3>Billing overview</h3><p>{invoices.length} invoice(s) need payment follow-up.</p><strong>{inr(outstanding)} <small>outstanding</small></strong></div></section>
-          <section className="mini-panel" id="maintenance"><div className="mini-icon green">⟳</div><div><h3>Maintenance plans</h3><p>Recurring client support.</p><strong>{maintenance.length} <small>active plan(s)</small></strong></div></section>
+          <section className="mini-panel" id="finance"><div className="mini-icon amber">₹</div><div><h3><Link href="/invoices">Billing overview →</Link></h3><p>{invoices.length} invoice(s) need payment follow-up.</p><strong>{inr(outstanding)} <small>outstanding</small></strong></div></section>
+          <section className="mini-panel" id="maintenance"><div className="mini-icon green">⟳</div><div><h3><Link href="/maintenance">Maintenance plans →</Link></h3><p>Recurring client support.</p><strong>{maintenance.length} <small>active plan(s)</small></strong></div></section>
         </div>
         <footer><span>VENTABLk.CO <b>·</b> AGENCY WORKSPACE</span><span>Private by design. Keep client data out of GitHub.</span></footer>
       </section>
