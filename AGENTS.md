@@ -1,34 +1,31 @@
 # Agent Instructions — Ventablk Agency OS
 
-These instructions apply to the whole repository unless a deeper `AGENTS.md` overrides them.
+These instructions apply to the entire repository unless a deeper AGENTS.md overrides them.
 
-## Before making changes
-- Read `PROGRESS.md`, `DECISIONS.md`, and the relevant project standards before editing.
-- Follow `design.md` for agency-wide hospital website design principles and `WEBSITE_TECHNICAL_STANDARD.md` for implementation quality.
-- For the agency dashboard, also read `dashboard/DESIGN.md` and `dashboard/README.md`.
-- Inspect the current implementation before replacing or restyling it. Preserve approved decisions and existing behavior unless a change is requested.
+## Mandatory preflight for every substantial website task
 
-## Design skill workflow
-Use the relevant installed skills when available; do not claim a skill or MCP server is active unless the current coding environment confirms it.
+Read skills/ventablk-website-workflow/SKILL.md and follow its required gates. The five resources are agency requirements:
+1. VoltAgent Awesome DESIGN.md reference selection for new visual directions.
+2. Taste Skill for art direction and pre-flight critique.
+3. Impeccable for design critique and refinement.
+4. Vercel Web Design Guidelines for UI/accessibility/interaction review.
+5. Microsoft Playwright MCP for browser workflow and responsive verification when connected.
 
-1. **New interface or substantial redesign:** use Taste Skill (`design-taste-frontend`) to establish a distinctive art direction before implementation.
-2. **Design critique and refinement:** use Impeccable for shaping, critique, audit, polish, responsive adaptation, typography, layout, motion, and edge cases.
-3. **Guideline compliance review:** use Vercel's `web-design-guidelines` skill for accessibility, interaction, responsive layout, forms, semantics, and performance checks.
-4. **Browser verification:** use Microsoft Playwright MCP when it is configured and available. Test real page behavior and representative viewports; do not treat a screenshot alone as proof of functional correctness.
-5. **Visual reference research:** use VoltAgent's Awesome DESIGN.md collection to find a relevant reference. Select references deliberately; do not blindly copy another company's branding or assume a catalog is itself an agent skill.
+Do not skip an unavailable gate silently. Use its manual checklist as fallback, label it Manual review, and do not claim the upstream skill/MCP ran. Installation documentation is in AGENT_SKILLS.md.
 
-These tools complement, rather than replace, the approved agency standard and project-specific client approvals. Resolve conflicts in this order: explicit user/client approval and scope, project-specific design brief, agency standards, then external skill recommendations.
+## Before changes
 
-## Quality gate for website and dashboard changes
-- Check desktop and responsive layouts at relevant widths; test intermediate widths, zoom, and long content where relevant.
-- Review keyboard access, visible focus, semantic structure, form labels/errors, loading/empty/error states, and reduced-motion behavior.
-- Check image dimensions, font loading, layout shift, unnecessary JavaScript, and metadata/SEO where relevant.
-- Use Playwright for key flows when available. Record what was actually tested and the result.
-- Fix issues found by review; do not merely list them if implementation is in scope.
-- Never claim tests, builds, browser checks, deployments, or integrations passed unless they were run and verified.
+- Read PROGRESS.md, DECISIONS.md, and relevant standards.
+- For hospital websites, follow design.md and WEBSITE_TECHNICAL_STANDARD.md.
+- For the dashboard, read dashboard/DESIGN.md and dashboard/README.md.
+- Inspect the implementation, preserve approved decisions, check branch and diff, and keep changes focused.
 
-## Safety and repository hygiene
-- This repository is public. Never commit real client records, patient information, applicant CVs, private invoices, credentials, tokens, database dumps, or sensitive commercial data.
-- Keep secrets in local environment files that are ignored by Git.
-- Do not make destructive database or Git operations without explicit authorization.
-- Make focused changes and update `PROGRESS.md` after meaningful milestones.
+## Quality and security
+
+- Check desktop and responsive layouts, including intermediate widths and long content.
+- Review keyboard access, visible focus, semantics, form labels/errors, loading/empty/error states, reduced motion, performance and SEO as relevant.
+- Run actual project build/lint/tests when execution is available; report only verified results.
+- This repository is public. Never commit real client records, patient data, private invoices, CVs, tokens, credentials, database dumps, local repository inventories, or commercial secrets.
+- Keep operational records in the local database, secrets in ignored environment files, and scanner output outside this repository.
+- Do not make destructive database/Git actions, merge a PR, or deploy without explicit authorization.
+- Update PROGRESS.md after meaningful milestones.
