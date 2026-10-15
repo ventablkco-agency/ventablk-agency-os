@@ -40,6 +40,7 @@ export default async function DashboardPage() {
           <a className="nav-item" href="#leads"><span>↗</span> Leads</a>
           <a className="nav-item" href="#finance"><span>₹</span> Billing</a>
           <a className="nav-item" href="#maintenance"><span>⟳</span> Maintenance</a>
+          <Link className="nav-item" href="/import"><span>⇧</span> Import repository</Link>
         </nav>
         <div className="sidebar-bottom"><span className="status-dot" /> Private workspace <small>Local database · Docker</small></div>
       </aside>
