@@ -13,6 +13,10 @@ Read skills/ventablk-website-workflow/SKILL.md and follow its required gates. Th
 
 Do not skip an unavailable gate silently. Use its manual checklist as fallback, label it Manual review, and do not claim the upstream skill/MCP ran. Installation documentation is in AGENT_SKILLS.md.
 
+## Required project documents
+
+Before substantial client website work, use `templates/project-docs/README.md` and create/review all six project documents in the client's private repository: `PRODUCT_REQUIREMENTS.md`, `TECHNICAL_REQUIREMENTS.md`, `APP_FLOW.md`, `DESIGN_BRIEF.md`, `BACKEND_SCHEMA.md` (or document why backend/data schema is not applicable), and `IMPLEMENTATION_PLAN.md`. Reconcile contradictions and obtain approvals for scope, design direction, integrations/data handling, and release responsibility before large implementation work. Never fabricate approvals or client facts.
+
 ## Before changes
 
 - Read PROGRESS.md, DECISIONS.md, and relevant standards.
