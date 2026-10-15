@@ -17,6 +17,12 @@ on:
       - feature/agency-dashboard-foundation
     paths:
       - "dashboard/**"
+      - "scripts/**"
+      - "AGENTS.md"
+      - "AGENT_SKILLS.md"
+      - "skills/**"
+      - "AUTOMATION_ROADMAP.md"
+      - "PROGRESS.md"
       - ".github/workflows/dashboard-ci.yml"
 
 permissions:
