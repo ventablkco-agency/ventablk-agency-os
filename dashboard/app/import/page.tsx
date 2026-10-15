@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { importProjectManifest } from "./actions";
+import BulkImportForm from "./bulk-import-form";
+import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-type SearchParams = Promise<{ error?: string; success?: string; client?: string; project?: string }>;
+type SearchParams = Promise<{ error?: string; success?: string; client?: string; project?: string; bulkError?: string; bulkSuccess?: string; createdProjects?: string; updatedProjects?: string; createdClients?: string; conflicts?: string }>;
 
 const errors: Record<string, string> = {
   "file-required": "Choose a JSON manifest file first.",
@@ -21,6 +23,22 @@ const errors: Record<string, string> = {
 
 export default async function ImportPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
+  const [clients, projects] = await Promise.all([
+    prisma.client.findMany({ select: { id: true, name: true, organization: true }, orderBy: { name: "asc" } }),
+    prisma.project.findMany({ select: { sourceId: true, repositoryUrl: true, clientId: true, name: true } }),
+  ]);
+  const bulkErrors: Record<string, string> = {
+    "inventory-required": "Choose a repository inventory file first.",
+    "inventory-too-large": "The inventory is too large. Scan fewer repositories or exclude archived folders.",
+    "invalid-json": "The inventory or mapping data is invalid JSON. Select the generated inventory again.",
+    "invalid-inventory": "Unsupported inventory format. Generate a fresh inventory using the repository scanner.",
+    "invalid-mappings": "Client mappings are missing. Refresh the page and retry.",
+    "invalid-repository": "One or more repository records are incomplete. Regenerate the inventory.",
+    "duplicate-source": "This inventory contains duplicate repository identifiers. Resolve duplicates and rescan.",
+    "invalid-url": "A website or repository URL must use http:// or https://.",
+    "unmapped-client": "Choose a client for every repository before importing.",
+    "missing-client-metadata": "A new client can only be created from explicitly approved client name/organization metadata.",
+  };
   return (
     <main className="shell">
       <aside className="sidebar">
@@ -43,6 +61,12 @@ export default async function ImportPage({ searchParams }: { searchParams: Searc
         <header className="page-header"><div><div className="eyebrow">AGENCY OPERATIONS / IMPORT</div><h1>Import website project</h1><p>Populate client and project records from a manifest in your local website repository.</p></div></header>
         {params.success === "1" && <p className="notice success-notice" role="status">Import complete. Client: {params.client === "updated" ? "updated" : "created"}. Project: {params.project === "updated" ? "updated" : "created"}. Review both records before continuing.</p>}
         {params.error && <p className="notice" role="alert">{errors[params.error] ?? "The import could not be completed. Check the file and try again."}</p>}
+        {params.bulkError && <p className="notice" role="alert">{bulkErrors[params.bulkError] ?? "The repository inventory could not be imported. Review the file and try again."}</p>}
+        {params.bulkSuccess === "1" && <p className="notice success-notice" role="status">Repository sync complete. Projects created: {params.createdProjects || "0"}; projects updated: {params.updatedProjects || "0"}; clients created from approved metadata: {params.createdClients || "0"}; client conflicts skipped: {params.conflicts || "0"}.</p>}
+        <section className="panel import-panel bulk-import-panel">
+          <div className="panel-heading"><div><h3>Scan and import repositories</h3><p>Preview detected projects and map each to a client before importing in one batch.</p></div></div>
+          <BulkImportForm clients={clients} projects={projects} />
+        </section>
         <section className="panel import-panel">
           <div className="panel-heading"><div><h3>Choose a project manifest</h3><p>Only the selected JSON file is read; the dashboard does not scan your repository.</p></div></div>
           <form action={importProjectManifest} className="client-form import-form">
