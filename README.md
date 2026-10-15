@@ -6,9 +6,11 @@ This repository documents the repeatable processes and reusable standards for `v
 
 1. **[Progress tracker](PROGRESS.md)** — current status, approvals, blockers, and exact next step.
 2. **[Agency OS audit](AGENCY_OS_AUDIT.md)** — gaps and prioritized remediation plan.
-3. **[Checklist index](CHECKLIST.md)** — find the right document for each project stage.
-4. **[Client lifecycle](CLIENT_LIFECYCLE.md)** — end-to-end workflow.
-5. **[Decision log](DECISIONS.md)** — durable agency decisions and rationale.
+3. **[Agent instructions](AGENTS.md)** — rules AI coding agents should follow in this repository.
+4. **[Agent skills and browser tooling](AGENT_SKILLS.md)** — design skill setup, intended workflow, and Playwright MCP.
+5. **[Checklist index](CHECKLIST.md)** — find the right document for each project stage.
+6. **[Client lifecycle](CLIENT_LIFECYCLE.md)** — end-to-end workflow.
+7. **[Decision log](DECISIONS.md)** — durable agency decisions and rationale.
 
 ## Core website standards
 
@@ -17,6 +19,11 @@ This repository documents the repeatable processes and reusable standards for `v
 - [Website project blueprint](WEBSITE_PROJECT_BLUEPRINT.md)
 - [Default website architecture](DEFAULT_WEBSITE_ARCHITECTURE.md) — approval still pending.
 - [Website reference library](WEBSITE_REFERENCE_LIBRARY.md) — add owner-supplied optimization repositories and UI/animation links here.
+
+## Agency dashboard
+
+- [Dashboard README](dashboard/README.md) — laptop-only Docker setup.
+- [Dashboard design system](dashboard/DESIGN.md) — visual and interaction standards.
 
 ## Client lifecycle documents
 
@@ -40,10 +47,10 @@ This repository documents the repeatable processes and reusable standards for `v
 - Work in small, agreed steps and update documentation after meaningful decisions.
 - Do not claim an implementation, integration, permission, test, or deployment is complete until verified.
 - Keep secrets, credentials, patient information, applicant CVs, form submissions, and private client invoices out of this repository.
-- This repository is currently public. Keep only reusable blank templates here. Switch it to private before adding client-specific or commercially sensitive information.
+- This repository is currently public. Keep only reusable blank templates and source code here. Switch it to private before adding client-specific or commercially sensitive information.
 - Treat the website blueprint and architecture documents as guidance until a project-specific implementation is built and tested.
 - Legal, tax, privacy, and contract templates require appropriate professional review before being treated as binding terms.
 
 ## Scope
 
-The current focus is to turn the documented standards into a reusable website starter with responsive components, technical SEO foundations, automated quality checks, and project-specific implementation records.
+The current focus is to finish the agency dashboard foundation and integrate a repeatable design-review and browser-testing workflow. Client-specific website work is paused unless explicitly requested.
