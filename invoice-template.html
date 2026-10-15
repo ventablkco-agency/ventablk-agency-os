@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoice Template — ventablk.co AGENCY</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#050505; --panel:#1d1d1d; --text:#f6f6f6; --muted:#b8b8b8; --line:#444; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:#262626; color:var(--text); font:14px/1.5 Arial, Helvetica, sans-serif; }
+    .invoice { width:min(210mm, 100%); min-height:297mm; margin:24px auto; padding:15mm 16mm; background:var(--bg); border:1px solid #303030; }
+    .top, .meta, .parties, .payment, .footer { display:grid; gap:24px; }
+    .top { grid-template-columns:1fr auto; align-items:start; }
+    .wordmark { font-size:30px; font-weight:800; letter-spacing:-1.5px; line-height:1; }
+    .underline { display:inline-block; width:38px; height:5px; margin-left:4px; background:currentColor; vertical-align:middle; }
+    .agency { margin:8px 0 0 80px; font-size:10px; letter-spacing:6px; }
+    .tagline { font-size:10px; letter-spacing:2px; text-align:right; color:var(--muted); }
+    .meta { grid-template-columns:1fr 1fr; align-items:end; margin:38px 0 22px; padding-bottom:18px; border-bottom:1px solid var(--line); }
+    h1 { margin:0; font-size:clamp(42px,7vw,64px); line-height:.95; letter-spacing:-2px; }
+    .service-line { margin-top:12px; color:var(--muted); font-size:9px; letter-spacing:2px; }
+    .meta-list { border-left:1px solid var(--line); padding-left:18px; font-size:11px; }
+    .meta-row { display:grid; grid-template-columns:105px 1fr; gap:8px; margin:7px 0; }
+    .label, th { color:var(--muted); font-size:9px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; }
+    .parties { grid-template-columns:1fr 1fr; margin:20px 0 26px; padding:18px 0; border-bottom:1px solid var(--line); border-top:1px solid var(--line); }
+    .party + .party { border-left:1px solid var(--line); padding-left:24px; }
+    .party-name { margin:8px 0; font-size:18px; font-weight:700; }
+    .muted { color:var(--muted); }
+    table { width:100%; border-collapse:collapse; font-size:11px; }
+    th { text-align:left; padding:11px 7px; border-bottom:1px solid var(--line); }
+    td { padding:13px 7px; border-bottom:1px solid var(--line); vertical-align:top; }
+    th:first-child, td:first-child { padding-left:0; }
+    th:last-child, td:last-child { padding-right:0; text-align:right; }
+    .num { text-align:right; white-space:nowrap; }
+    .totals-wrap { display:flex; justify-content:flex-end; margin:18px 0 30px; }
+    .totals { width:min(330px,100%); }
+    .total-row { display:flex; justify-content:space-between; gap:16px; padding:5px 8px; color:var(--muted); }
+    .total-row strong { color:var(--text); }
+    .balance { margin-top:8px; padding:12px 9px; background:var(--panel); font-size:14px; font-weight:700; color:var(--text); }
+    .section-title { margin:0 0 5px; font-size:20px; font-weight:800; }
+    .payment { grid-template-columns:1fr 1fr; padding-top:18px; border-top:1px solid var(--line); }
+    .payment-method + .payment-method { border-left:1px solid var(--line); padding-left:24px; }
+    .payment-method h3 { margin:10px 0; font-size:13px; }
+    .payment-details { font-size:11px; overflow-wrap:anywhere; }
+    .qr-placeholder { display:flex; align-items:center; justify-content:center; width:100px; height:100px; margin:12px 0; border:2px dashed var(--muted); color:var(--muted); font-size:11px; font-weight:700; text-align:center; padding:8px; }
+    .footer { grid-template-columns:1.4fr 1fr; margin-top:24px; padding-top:16px; border-top:1px solid var(--line); font-size:10px; }
+    .footer > div + div { border-left:1px solid var(--line); padding-left:20px; }
+    @media (max-width:650px) {
+      body { background:var(--bg); }
+      .invoice { margin:0; padding:22px 18px; border:0; min-height:0; }
+      .top { grid-template-columns:1fr; }
+      .tagline { text-align:left; }
+      .meta, .parties, .payment, .footer { grid-template-columns:1fr; gap:18px; }
+      .meta { margin-top:28px; }
+      .meta-list, .party + .party, .payment-method + .payment-method, .footer > div + div { border-left:0; padding-left:0; }
+      h1 { font-size:48px; }
+      table { font-size:10px; }
+      th, td { padding:9px 4px; }
+      .service-line { line-height:1.8; }
+    }
+    @media print {
+      @page { size:A4; margin:0; }
+      body { background:var(--bg); print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+      .invoice { width:210mm; min-height:297mm; margin:0; border:0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- TEMPLATE ONLY: replace placeholders, calculate totals, and insert a verified invoice-specific QR before issuing. -->
+  <main class="invoice">
+    <header class="top">
+      <div>
+        <div class="wordmark">ventablk.co<span class="underline"></span></div>
+        <div class="agency">A G E N C Y</div>
+      </div>
+      <div class="tagline">MODERN WEBSITES<br>FOR REAL IMPACT.</div>
+    </header>
+
+    <section class="meta">
+      <div>
+        <h1>INVOICE</h1>
+        <div class="service-line">WEBSITE DESIGN · DEVELOPMENT · MAINTENANCE</div>
+      </div>
+      <div class="meta-list">
+        <div class="meta-row"><span class="label">Invoice no.</span><span>[INV-YYYY-XXXX]</span></div>
+        <div class="meta-row"><span class="label">Issue date</span><span>[DD MMM YYYY]</span></div>
+        <div class="meta-row"><span class="label">Due date</span><span>[DD MMM YYYY]</span></div>
+        <div class="meta-row"><span class="label">Service period</span><span>[START DATE – END DATE]</span></div>
+      </div>
+    </section>
+
+    <section class="parties">
+      <div class="party">
+        <div class="label">From</div>
+        <div class="party-name">ventablk.co</div>
+        <div class="muted">[Business address, if required]<br>[Business email]<br>[Business phone]</div>
+      </div>
+      <div class="party">
+        <div class="label">Bill to</div>
+        <div class="party-name">[Client / organization name]</div>
+        <div class="muted">[Client billing address]<br>[Billing email]<br>[Client tax details, if applicable]</div>
+      </div>
+    </section>
+
+    <table aria-label="Invoice line items">
+      <thead><tr><th>Description</th><th>Service period</th><th class="num">Qty</th><th class="num">Rate (INR)</th><th>Amount (INR)</th></tr></thead>
+      <tbody>
+        <tr><td>Website maintenance</td><td>[MMM YYYY]</td><td class="num">1</td><td class="num">[X,XXX.00]</td><td>[X,XXX.00]</td></tr>
+        <tr><td>Approved additional work (if any)</td><td>[MMM YYYY]</td><td class="num">[#]</td><td class="num">[X,XXX.00]</td><td>[X,XXX.00]</td></tr>
+      </tbody>
+    </table>
+
+    <div class="totals-wrap">
+      <div class="totals">
+        <div class="total-row"><span>Subtotal</span><span>₹ [X,XXX.00]</span></div>
+        <div class="total-row"><span>Tax (if applicable)</span><span>₹ [—]</span></div>
+        <div class="total-row"><strong>Total</strong><strong>₹ [X,XXX.00]</strong></div>
+        <div class="total-row"><span>Amount paid</span><span>₹ [0.00]</span></div>
+        <div class="total-row balance"><span>BALANCE DUE (INR)</span><span>₹ [X,XXX.00]</span></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">PAYMENT DETAILS</h2>
+    <p class="muted">Please use one of the following payment methods.</p>
+    <section class="payment">
+      <div class="payment-method">
+        <h3>BANK TRANSFER</h3>
+        <div class="payment-details">
+          Account holder: [Business account holder]<br>
+          Bank name: [Bank name]<br>
+          Account number: [Account number]<br>
+          IFSC: [IFSC code]<br>
+          Payment reference: [Invoice number]
+        </div>
+      </div>
+      <div class="payment-method">
+        <h3>UPI PAYMENT</h3>
+        <div class="payment-details">UPI ID: [Verified business UPI ID]</div>
+        <div class="qr-placeholder">PLACEHOLDER<br>NOT FOR PAYMENT</div>
+        <div class="muted">QR should prefill the invoice amount and reference where supported. Verify the payee before paying.</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <div class="label">Payment terms</div>
+        Payment due by [DD MMM YYYY]. Please use the invoice number as the payment reference. For billing questions, contact [business email].
+      </div>
+      <div>
+        <div class="label">Thank you</div>
+        We appreciate your business and look forward to a continued partnership.
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
