@@ -17,13 +17,13 @@ Minimize repeated manual data entry. The dashboard should discover technical fac
 ## Implementation phases
 
 ### Phase A — Inventory and bulk import
-- Add a local Node.js scanner in the OS repository.
-- Let the owner configure one or more allowed roots; default to `~/web-dev`.
-- Discover Git repositories, skip `.git`, `node_modules`, build outputs, caches, `.env*`, and secret-bearing files.
-- Read only an allowlist of metadata files and Git metadata.
-- Emit a versioned inventory JSON file with a schema version and generated timestamp.
-- Extend the dashboard importer to validate and preview multiple projects in one file before applying changes.
-- Keep existing single-manifest import compatible.
+- [x] Add a local Node.js scanner with configurable root and exclusions; default to `~/web-dev`.
+- [x] Discover Git repositories and skip dependency/build/cache folders.
+- [x] Read only Git metadata, top-level names, package manifest clues, and allowlisted fields in `ventablk.project.json`; sanitize Git remotes before writing them.
+- [x] Emit a versioned JSON inventory outside the repository; never execute discovered project scripts or read credentials/environment-file contents.
+- [x] Add dashboard batch inventory preview, client mapping, stable source ID, and safe project reconciliation in source.
+- [x] Preserve the existing single-manifest import.
+- [ ] Run scanner tests and rebuild/exercise the dashboard locally before treating the phase as verified.
 
 ### Phase B — Safer reconciliation
 - Store a stable source identifier and last-seen metadata for discovered repositories.
