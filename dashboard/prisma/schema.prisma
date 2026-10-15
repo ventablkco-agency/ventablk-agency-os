@@ -81,6 +81,7 @@ model Lead {
 
 model Project {
   id             String        @id @default(cuid())
+  sourceId       String?       @unique
   name           String
   websiteUrl     String?
   repositoryUrl  String?
