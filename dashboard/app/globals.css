@@ -166,3 +166,21 @@ footer{font-size:11px;line-height:1.5}
   .page-header>.primary-button{font-size:12px}
   .client-table th{font-size:10px}
 }
+
+
+/* Bulk repository inventory preview */
+.bulk-import-panel{margin-bottom:16px}
+.bulk-preview-wrap{width:100%;max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:9px}
+.bulk-preview-table{width:100%;min-width:720px;border-collapse:collapse;text-align:left}
+.bulk-preview-table th{padding:11px 12px;color:#758195;font-size:11px;font-weight:700;letter-spacing:.45px;text-transform:uppercase;background:#fafbfd;border-bottom:1px solid var(--line)}
+.bulk-preview-table td{padding:13px 12px;border-bottom:1px solid #edf0f4;vertical-align:top;font-size:13px;line-height:1.5}
+.bulk-preview-table tr:last-child td{border-bottom:0}
+.bulk-preview-table td:first-child{min-width:210px}
+.bulk-preview-table td:nth-child(2){min-width:170px}
+.bulk-preview-table td:nth-child(3){min-width:260px}
+.bulk-preview-table strong,.bulk-preview-table small{display:block;overflow-wrap:anywhere}
+.bulk-preview-table small{margin-top:4px;font-size:12px;color:#758195;font-weight:400;line-height:1.45}
+.bulk-preview-table .import-existing{color:#16866a;font-weight:700}
+.mapping-select-label{display:block;min-width:240px}
+.mapping-select-label select{width:100%}
+.client-form .primary-button:disabled{opacity:.45;cursor:not-allowed}
