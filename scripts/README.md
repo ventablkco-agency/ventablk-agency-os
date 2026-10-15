@@ -1,6 +1,6 @@
 # Local repository inventory scanner
 
-This tool discovers Git repositories in a configured local directory and produces a JSON inventory. It does not import into the dashboard database by itself.
+This tool discovers likely website repositories in a configured local directory and produces a JSON inventory. It excludes the Agency OS repository itself when run from within that checkout and reports unrelated repositories skipped. It does not import into the dashboard database by itself.
 
 ## Run from the Agency OS repository root
 
