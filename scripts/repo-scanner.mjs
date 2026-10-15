@@ -66,7 +66,7 @@ function isWebsiteCandidate(names,pkg,custom) {
   const webStacks=new Set(["Astro","Next.js","Angular","Nuxt","SvelteKit","Vue","React","Vite"]);
   if(webStacks.has(stack))return true;
   if(names.has("index.html"))return true;
-  if([...names].some(n=>/^(astro|next|vite|nuxt|svelte)\\.config\\./i.test(n)))return true;
+  if([...names].some(n=>/^(astro|next|vite|nuxt|svelte)\.config\./i.test(n)))return true;
   return Boolean(custom && custom.project && custom.project.websiteUrl);
 }
 async function inspect(repo,root) {
