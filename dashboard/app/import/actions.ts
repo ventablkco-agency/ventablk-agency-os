@@ -164,8 +164,10 @@ export async function importRepositoryInventory(formData: FormData) {
     } : null;
     const framework = text(entry.framework, 100);
     const directory = text(entry.directory, 400);
+    const branch = text(entry.branch, 200);
+    const commit = text(entry.commit, 100);
     const mapping = text(map[sourceId], 200);
-    return { sourceId, name, repositoryUrl, rawRepositoryUrl, rawWebsiteUrl, metadataClient, metadataProject, framework, directory, mapping };
+    return { sourceId, name, repositoryUrl, rawRepositoryUrl, rawWebsiteUrl, metadataClient, metadataProject, framework, directory, branch, commit, mapping };
   });
   if (normalized.some((entry) => !entry || !entry.sourceId || !entry.name)) redirect("/import?bulkError=invalid-repository");
   const records = normalized as NonNullable<(typeof normalized)[number]>[];
@@ -232,6 +234,11 @@ export async function importRepositoryInventory(formData: FormData) {
             repositoryUrl: existingProject.repositoryUrl || record.repositoryUrl || null,
             websiteUrl: existingProject.websiteUrl || websiteUrl,
             hosting: existingProject.hosting || hosting,
+            sourceDirectory: record.directory || existingProject.sourceDirectory,
+            sourceBranch: record.branch || existingProject.sourceBranch,
+            sourceCommit: record.commit || existingProject.sourceCommit,
+            framework: record.framework || existingProject.framework,
+            lastScannedAt: new Date(),
           },
         });
         updatedProjects += 1;
@@ -239,6 +246,11 @@ export async function importRepositoryInventory(formData: FormData) {
         await tx.project.create({
           data: {
             sourceId: record.sourceId,
+            sourceDirectory: record.directory || null,
+            sourceBranch: record.branch || null,
+            sourceCommit: record.commit || null,
+            framework: record.framework || null,
+            lastScannedAt: new Date(),
             name: record.metadataProject?.name || record.name,
             clientId,
             repositoryUrl: record.repositoryUrl || null,
