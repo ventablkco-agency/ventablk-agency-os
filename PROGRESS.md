@@ -37,6 +37,8 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - [x] Added `BILLING_AND_MAINTENANCE_BILLING.md` to define invoicing, monthly maintenance invoices, QR payment verification, reminders, and reconciliation.
 - [x] Recorded owner preference: bank transfer + direct UPI QR; prefill exact invoice amount/reference where supported; consider payment gateway later.
 - [x] Added `INVOICE_TEMPLATE_SPEC.md` defining the invoice layout, payment section, QR verification, PDF export, and required information before real invoices can be issued.
+- [x] Confirmed invoice display branding as `ventablk.co` with the `AGENCY` descriptor; owner supplied white and black logo variants.
+- [x] Created first visual invoice mockup with placeholders; no live payment QR or unverified bank details are presented as real.
 - [x] Added `WEBSITE_REFERENCE_LIBRARY.md` to collect optimization repositories, UI components, animation references, and design tools supplied by the agency owner.
 - [ ] Audit the existing Siddaganga Hospital repository before extracting reusable website components.
 
