@@ -77,3 +77,9 @@ footer{display:flex;justify-content:space-between;gap:15px;color:#a0a9b6;font-si
 .success-notice{background:#e7f7ef;color:#147a5f}
 @media(max-width:1200px){.client-workspace{grid-template-columns:1fr}.client-form-panel{grid-row:1}.client-table-panel{grid-row:2}}
 @media(max-width:700px){.page-header{align-items:flex-start}.page-header h1{font-size:24px}.page-header>.primary-button{padding:9px 10px;font-size:10px}.client-workspace{gap:12px}.client-table-panel,.client-form-panel{padding:13px}.form-grid{grid-template-columns:1fr}.form-grid .form-full{grid-column:auto}.client-table th,.client-table td{padding:10px 7px}.client-table th{font-size:8px}.table-client{min-width:125px}.search-form{flex-wrap:wrap}.search-form input{flex-basis:100%}}
+
+.search-form select,.client-form select{width:100%;min-width:0;border:1px solid #dfe5ec;border-radius:8px;padding:10px 11px;background:#fff;color:var(--ink);font:400 12px 'DM Sans',sans-serif;outline:none}
+.search-form select:focus,.client-form select:focus{border-color:#6d8bf4;box-shadow:0 0 0 3px #3168f51a}
+.search-form select{flex:0 1 155px}
+.status-status{background:#f0f3f7;color:#6d7888}
+@media(max-width:700px){.search-form select{flex:1 1 130px}}
