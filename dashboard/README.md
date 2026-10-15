@@ -49,12 +49,12 @@ docker compose down -v         # DESTRUCTIVE: also deletes the database volume
 - Leads: create, edit, search, track pipeline stages, estimated value, and follow-up dates.
 - Invoice tracking: create/edit invoices, record amounts paid, calculate outstanding balances, and flag overdue invoices. This is an internal tracker, not a tax-invoice generator or payment processor.
 - Maintenance plans: create/edit recurring care plans, fees, next billing dates, and active/inactive state. Billing reminders and automatic charges are not enabled.
-- Repository manifest importer to populate client/project records from a selected JSON file; it does not scan repositories automatically.
+- Bulk repository inventory preview/import from a local JSON scan; supports client mapping, stable source IDs, idempotent matching, and skips projects linked to a different client. The prior single-manifest importer remains available.
 - Workspace settings with authenticated JSON data export and a documented PostgreSQL backup command.
 
 ## Verification status
 
-The user has confirmed the local project-manifest importer worked. The latest bundled modules were written to the feature branch, but the complete dashboard must still be rebuilt and exercised locally before this branch is considered verified. Automated reminders, automated backups, and stronger session-based authentication are not implemented.
+The user confirmed a prior single-manifest import worked. The repository scanner and bulk inventory preview/import code have been written to the feature branch, but scanner tests and the complete dashboard build/flows still require local verification. Automated reminders, automated backups, and stronger session-based authentication are not implemented.
 
 ## Before storing real client data
 
