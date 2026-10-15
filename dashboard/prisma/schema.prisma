@@ -1,0 +1,144 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL_SENT
+  NEGOTIATION
+  WON
+  LOST
+}
+
+enum ProjectStatus {
+  DISCOVERY
+  DESIGN
+  CONTENT
+  DEVELOPMENT
+  QA
+  LAUNCH
+  MAINTENANCE
+  ON_HOLD
+  COMPLETED
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  WAITING
+  DONE
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PARTIALLY_PAID
+  PAID
+  OVERDUE
+  VOID
+}
+
+model Client {
+  id             String    @id @default(cuid())
+  name           String
+  organization   String?
+  email          String?
+  phone          String?
+  website        String?
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  leads          Lead[]
+  projects       Project[]
+  invoices       Invoice[]
+  maintenance    MaintenancePlan[]
+}
+
+model Lead {
+  id             String     @id @default(cuid())
+  organization   String
+  contactName    String?
+  email          String?
+  phone          String?
+  source         String?
+  service        String?
+  estimatedValue Int?
+  status         LeadStatus @default(NEW)
+  nextFollowUp   DateTime?
+  notes          String?
+  clientId       String?
+  client         Client?    @relation(fields: [clientId], references: [id], onDelete: SetNull)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model Project {
+  id             String        @id @default(cuid())
+  name           String
+  websiteUrl     String?
+  repositoryUrl  String?
+  hosting        String?
+  domainRenewal  DateTime?
+  status         ProjectStatus @default(DISCOVERY)
+  startDate      DateTime?
+  dueDate        DateTime?
+  budget         Int?
+  notes          String?
+  clientId       String
+  client         Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  tasks          Task[]
+  invoices       Invoice[]
+  maintenance    MaintenancePlan[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Task {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  status      TaskStatus @default(TODO)
+  dueDate     DateTime?
+  projectId   String
+  project     Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Invoice {
+  id            String        @id @default(cuid())
+  invoiceNumber String        @unique
+  description   String?
+  amount        Int
+  amountPaid    Int           @default(0)
+  dueDate       DateTime?
+  status        InvoiceStatus @default(DRAFT)
+  clientId      String
+  client        Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  projectId     String?
+  project       Project?      @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model MaintenancePlan {
+  id            String   @id @default(cuid())
+  name          String
+  monthlyFee    Int
+  nextBillingAt DateTime?
+  active        Boolean  @default(true)
+  notes         String?
+  clientId      String
+  client        Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  projectId     String?
+  project       Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
