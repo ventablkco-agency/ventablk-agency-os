@@ -110,6 +110,16 @@ export async function importProjectManifest(formData: FormData) {
 
 
 const normalizeRepositoryUrl = (value: string) => value.trim().replace(/\.git$/i, "").replace(/\/+$/, "").toLowerCase();
+const sanitizeHttpUrl = (value: string, repository = false): string | null => {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    url.username = "";
+    url.password = "";
+    if (repository) { url.search = ""; url.hash = ""; url.pathname = url.pathname.replace(/\.git$/i, "").replace(/\/+$/, ""); }
+    return url.toString().replace(repository ? /\/+$/ : /$^/, "");
+  } catch { return null; }
+};
 const isPlainObject = (value: unknown): value is Record<string, unknown> => Boolean(value) && typeof value === "object" && !Array.isArray(value);
 
 export async function importRepositoryInventory(formData: FormData) {
@@ -137,30 +147,31 @@ export async function importRepositoryInventory(formData: FormData) {
     if (!isPlainObject(entry)) return null;
     const sourceId = text(entry.sourceId, 500);
     const name = text(entry.name, 160);
-    const repositoryUrl = text(entry.repositoryUrl, 500);
+    const rawRepositoryUrl = text(entry.repositoryUrl, 500);
+    const repositoryUrl = rawRepositoryUrl ? sanitizeHttpUrl(rawRepositoryUrl, true) || "" : "";
     const clientRaw = isPlainObject(entry.client) ? entry.client : null;
     const projectRaw = isPlainObject(entry.explicitProjectMetadata) ? entry.explicitProjectMetadata : null;
     const metadataClient = clientRaw ? {
       name: text(clientRaw.name, 120),
       organization: text(clientRaw.organization, 160),
     } : null;
+    const rawWebsiteUrl = projectRaw ? text(projectRaw.websiteUrl, 500) : "";
     const metadataProject = projectRaw ? {
       name: text(projectRaw.name, 160),
-      websiteUrl: text(projectRaw.websiteUrl, 500),
+      websiteUrl: rawWebsiteUrl ? sanitizeHttpUrl(rawWebsiteUrl) || "" : "",
       hosting: text(projectRaw.hosting, 120),
       status: text(projectRaw.status, 40),
     } : null;
     const framework = text(entry.framework, 100);
     const directory = text(entry.directory, 400);
     const mapping = text(map[sourceId], 200);
-    return { sourceId, name, repositoryUrl, metadataClient, metadataProject, framework, directory, mapping };
+    return { sourceId, name, repositoryUrl, rawRepositoryUrl, rawWebsiteUrl, metadataClient, metadataProject, framework, directory, mapping };
   });
   if (normalized.some((entry) => !entry || !entry.sourceId || !entry.name)) redirect("/import?bulkError=invalid-repository");
   const records = normalized as NonNullable<(typeof normalized)[number]>[];
   if (new Set(records.map((item) => item.sourceId)).size !== records.length) redirect("/import?bulkError=duplicate-source");
   for (const record of records) {
-    if (record.repositoryUrl && !validUrl(record.repositoryUrl)) redirect("/import?bulkError=invalid-url");
-    if (record.metadataProject?.websiteUrl && !validUrl(record.metadataProject.websiteUrl)) redirect("/import?bulkError=invalid-url");
+    if ((record.rawRepositoryUrl && !record.repositoryUrl) || (record.rawWebsiteUrl && !record.metadataProject?.websiteUrl)) redirect("/import?bulkError=invalid-url");
     if (!record.mapping) redirect("/import?bulkError=unmapped-client");
     if (record.mapping === "__create__" && !(record.metadataClient?.name || record.metadataClient?.organization)) redirect("/import?bulkError=missing-client-metadata");
   }
