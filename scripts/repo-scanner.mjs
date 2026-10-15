@@ -3,7 +3,7 @@ import { readdir, readFile, mkdir, writeFile, stat, chmod } from "node:fs/promis
 import { basename, dirname, join, relative, resolve, sep } from "node:path";
 import { homedir } from "node:os";
 import { spawnSync } from "node:child_process";
-import { pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
 
 const SKIP = new Set([".git","node_modules",".next","dist","build","coverage",".cache",".turbo",".vercel",".astro","out","vendor","tmp","temp"]);
 const STATUSES = new Set(["DISCOVERY","DESIGN","CONTENT","DEVELOPMENT","QA","LAUNCH","MAINTENANCE","ON_HOLD","COMPLETED"]);
@@ -61,6 +61,14 @@ function framework(pkg) {
   if(d.nuxt)return "Nuxt"; if(d.svelte||d["@sveltejs/kit"])return "SvelteKit"; if(d.vue)return "Vue";
   if(d.react)return "React"; if(d.vite)return "Vite"; return pkg?"Node.js / unspecified frontend":"Unknown";
 }
+function isWebsiteCandidate(names,pkg,custom) {
+  const stack=framework(pkg);
+  const webStacks=new Set(["Astro","Next.js","Angular","Nuxt","SvelteKit","Vue","React","Vite"]);
+  if(webStacks.has(stack))return true;
+  if(names.has("index.html"))return true;
+  if([...names].some(n=>/^(astro|next|vite|nuxt|svelte)\\.config\\./i.test(n)))return true;
+  return Boolean(custom && custom.project && custom.project.websiteUrl);
+}
 async function inspect(repo,root) {
   const entries=await readdir(repo,{withFileTypes:true}), names=new Set(entries.map(e=>e.name));
   const pkg=await jsonFile(join(repo,"package.json"),256*1024);
@@ -69,6 +77,8 @@ async function inspect(repo,root) {
   const valid=pkg&&typeof pkg==="object"&&!Array.isArray(pkg), packageName=valid?str(pkg.name,180):"";
   const dir=relative(root,repo).split(sep).join("/");
   const hosting=[], ci=[];
+  const detectedFramework=framework(valid?pkg:null);
+  const websiteCandidate=isWebsiteCandidate(names,valid?pkg:null,custom);
   if(["wrangler.toml","wrangler.json","wrangler.jsonc"].some(n=>names.has(n)))hosting.push("Cloudflare configuration detected");
   if(names.has("vercel.json"))hosting.push("Vercel configuration detected");
   if(names.has("netlify.toml"))hosting.push("Netlify configuration detected");
@@ -79,7 +89,7 @@ async function inspect(repo,root) {
   return {
     sourceId:remote?remote.replace(/\.git$/i,"").toLowerCase():"local:"+(dir||".").toLowerCase(),
     directory:dir||".",repositoryUrl:remote,branch,commit,name:(custom&&custom.project.name)||packageName||basename(repo),
-    packageName:packageName||null,framework:framework(valid?pkg:null),packageJsonFound:names.has("package.json"),
+    packageName:packageName||null,framework:detectedFramework,websiteCandidate,packageJsonFound:names.has("package.json"),
     readmeFound:[...names].some(n=>/^readme(?:\..+)?$/i.test(n)),hostingSignals:hosting,ciSignals:ci,
     client:custom?custom.client:null,explicitProjectMetadata:custom?custom.project:null,needsClientMapping:!(custom&&custom.client),
     discoveredAt:new Date().toISOString()
@@ -87,30 +97,32 @@ async function inspect(repo,root) {
 }
 async function discover(root,excludes) {
   const repositories=[],errors=[];
+  let skippedNonWebsiteRepositories=0;
   async function walk(dir) {
     if(excludes.some(x=>dir===x||dir.startsWith(x+sep)))return;
     let entries;
     try{entries=await readdir(dir,{withFileTypes:true});}
     catch(e){errors.push({path:relative(root,dir).split(sep).join("/")||".",message:e instanceof Error?e.message:"Unable to read directory"});return;}
     const names=new Set(entries.map(e=>e.name));
-    if(names.has(".git")){repositories.push(await inspect(dir,root));return;}
+    if(names.has(".git")){const record=await inspect(dir,root);if(record.websiteCandidate)repositories.push(record);else skippedNonWebsiteRepositories+=1;return;}
     for(const e of entries)if(e.isDirectory()&&!SKIP.has(e.name)&&!e.name.startsWith("."))await walk(join(dir,e.name));
   }
-  await walk(root); repositories.sort((a,b)=>a.directory.localeCompare(b.directory)); return {repositories,errors};
+  await walk(root); repositories.sort((a,b)=>a.directory.localeCompare(b.directory)); return {repositories,errors,skippedNonWebsiteRepositories};
 }
 export async function scanRepositories({root,excludes=[]}) {
   const s=await stat(root).catch(()=>null); if(!s||!s.isDirectory())throw new Error("Scan root is not an existing directory: "+root);
   const found=await discover(root,excludes);
   return {schemaVersion:1,generatedAt:new Date().toISOString(),scanRoot:root,
     safety:{ranProjectScripts:false,readEnvironmentFiles:false,readCredentialFiles:false,notes:"Only Git metadata, package.json, directory entry names, and allowlisted ventablk.project.json metadata are inspected. Project scripts are never run."},
-    summary:{repositoriesFound:found.repositories.length,repositoriesNeedingClientMapping:found.repositories.filter(r=>r.needsClientMapping).length,scanErrors:found.errors.length},
+    summary:{repositoriesFound:found.repositories.length,repositoriesNeedingClientMapping:found.repositories.filter(r=>r.needsClientMapping).length,scanErrors:found.errors.length,nonWebsiteRepositoriesSkipped:found.skippedNonWebsiteRepositories},
     repositories:found.repositories,errors:found.errors};
 }
 async function main() {
   const o=argsFrom(process.argv.slice(2));
   if(o.help){process.stdout.write("Usage: node scripts/repo-scanner.mjs [--root ~/web-dev] [--out ~/ventablk-repository-inventory.json] [--exclude PATH]\n");return;}
-  const result=await scanRepositories({root:o.root,excludes:[...o.excludes,o.out]});
+  const scannerRepository=resolve(dirname(fileURLToPath(import.meta.url)),"..");
+  const result=await scanRepositories({root:o.root,excludes:[...o.excludes,o.out,scannerRepository]});
   await mkdir(dirname(o.out),{recursive:true}); await writeFile(o.out,JSON.stringify(result,null,2)+"\n",{mode:0o600}); await chmod(o.out,0o600).catch(()=>{});
-  process.stdout.write("Found "+result.summary.repositoriesFound+" repositories; "+result.summary.repositoriesNeedingClientMapping+" need client mapping; "+result.summary.scanErrors+" scan errors.\nInventory written to "+o.out+"\n");
+  process.stdout.write("Found "+result.summary.repositoriesFound+" website repositories; "+result.summary.repositoriesNeedingClientMapping+" need client mapping; "+result.summary.nonWebsiteRepositoriesSkipped+" non-website repositories skipped; "+result.summary.scanErrors+" scan errors.\nInventory written to "+o.out+"\n");
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href)main().catch(e=>{process.stderr.write((e instanceof Error?e.message:"Scan failed")+"\n");process.exitCode=1;});
