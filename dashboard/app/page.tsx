@@ -35,7 +35,7 @@ export default async function DashboardPage() {
         <nav>
           <a className="nav-item active" href="#overview"><span>◫</span> Overview</a>
           <Link className="nav-item" href="/clients"><span>♧</span> Clients</Link>
-          <a className="nav-item" href="#projects"><span>▦</span> Projects</a>
+          <Link className="nav-item" href="/projects"><span>▦</span> Projects</Link>
           <a className="nav-item" href="#tasks"><span>☑</span> Tasks & deadlines</a>
           <a className="nav-item" href="#leads"><span>↗</span> Leads</a>
           <a className="nav-item" href="#finance"><span>₹</span> Billing</a>
