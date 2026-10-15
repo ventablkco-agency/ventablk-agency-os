@@ -51,8 +51,8 @@ function safeRepositoryUrl(remote) {
     url.password = "";
     url.search = "";
     url.hash = "";
-    url.pathname = url.pathname.replace(/\\.git$/i, "").replace(/\\/+$/, "");
-    return url.toString().replace(/\\/+$/, "");
+    url.pathname = url.pathname.replace(/\.git$/i, "").replace(/\/+$/, "");
+    return url.toString().replace(/\/+$/, "");
   } catch { return null; }
 }
 function framework(pkg) {
