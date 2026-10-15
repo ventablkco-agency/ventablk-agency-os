@@ -1,66 +1,54 @@
 # VentaBlk Co. — Progress Tracker
 
-Last updated: 2026-10-15
+Last updated: 2026-10-16
 
 ## Current goal
 
-Build a reliable, documented operating system for VentaBlk Co.'s hospital website agency, covering the complete client lifecycle from first contact through delivery, maintenance, renewal, and offboarding.
+Finish the laptop-only agency dashboard and remove repetitive data entry through local website-repository discovery, previewable bulk import, stable technical metadata sync and reusable task templates. Apply the agency's five design/QA resources as required workflow gates on every substantial website project.
 
-## Verified repository state
+## Repository and privacy
 
-- Repository: `ventablkco-agency/ventablk-agency-os`
-- Default branch: `main`
-- GitHub integration has all-repository selection enabled for the account.
-- Direct write access was verified through successful commits.
-- `CLIENT_LIFECYCLE.md` has been committed, fetched, and explicitly approved by the agency owner as the working process.
-- Agency logo was provided in the conversation but is not yet committed as a repository asset.
-- Repository visibility was verified as **public** on 2026-10-15. Do not add real client-specific or commercially sensitive information while it remains public.
+- Repository: ventablkco-agency/ventablk-agency-os
+- Working branch: feature/agency-dashboard-foundation
+- Dashboard PR #1 is open and unmerged pending CI/local verification.
+- This repository is public. Never commit real client data, credentials, database dumps, generated inventories, patient information, CVs, private invoices or commercial secrets.
+- Generated scanner output defaults to ~/ventablk-repository-inventory.json, outside the repository, with owner-only permissions where supported.
 
-## Completed
+## Completed in source
 
-- [x] Confirmed repository access and committed `README.md`.
-- [x] Added this progress tracker as the persistent session handoff.
-- [x] Created and verified `CLIENT_LIFECYCLE.md`; owner approved it as the working process.
-- [x] Created and received approval for `design.md` as the canonical design specification for hospital websites.
-- [x] Created `WEBSITE_TECHNICAL_STANDARD.md` and received approval as the agency-wide production baseline.
-- [x] Added `CLIENT_INFORMATION_TEMPLATE.md` as a reusable blank client/project record.
-- [x] Created and received approval for `WEBSITE_PROJECT_BLUEPRINT.md`.
-- [x] Created `DEFAULT_WEBSITE_ARCHITECTURE.md`; owner approval is still pending.
-- [x] Created `DECISIONS.md` for durable agency-wide decisions.
-- [x] Added billing, maintenance, invoice specification, invoice HTML, and placeholder PDF template. These remain templates and are not ready to issue as real invoices.
-- [x] Added `WEBSITE_REFERENCE_LIBRARY.md` for owner-supplied optimization repositories and component/animation references.
-- [x] Audited agency OS documentation and repository navigation; findings are in `AGENCY_OS_AUDIT.md`.
-- [x] Repaired README links and added `CHECKLIST.md` as the central workflow index.
-- [x] Per owner instruction, skipped the reusable website starter.
-- [x] Completed a read-only source audit of `ventablkco-agency/siddaganga-hospital`; findings are documented in `SIDDAGANGA_TECHNICAL_SEO_AUDIT.md`.
-- [x] Confirmed that the Siddaganga repository was not modified during the audit.
+- [x] Dashboard overview and modules for clients, projects, tasks, leads, invoice tracking, maintenance plans, export, settings and single-manifest import.
+- [x] Updated dashboard typography and corrected Contact name label/required-marker markup.
+- [x] Added AUTOMATION_ROADMAP.md for local discovery, reconciliation and proposed task-template workflows.
+- [x] Made the five listed design/QA resources mandatory review gates in AGENTS.md and skills/ventablk-website-workflow/SKILL.md. Manual fallbacks are required when upstream tools are unavailable; no tool run may be claimed without evidence.
+- [x] Added six reusable project document templates: PRD, technical requirements, application flow, design brief, backend schema, and implementation plan under templates/project-docs/.
+- [x] Added templates/project-docs/README.md describing when and how the six documents must be completed, approved, kept in sync, and stored in client repositories.
+- [x] Updated AGENTS.md, the website workflow skill and repository README to require the six-document pack before substantial website implementation.
+- [x] AGENT_SKILLS.md already contains the official Taste Skill, Impeccable, and Vercel Web Design Guidelines setup commands, plus the Playwright MCP setup/check guidance; the workflow now explicitly requires checking availability and using that guide.
+- [x] Added a Node.js website-repository scanner at scripts/repo-scanner.mjs and tests at scripts/repo-scanner.test.mjs.
+- [x] Scanner examines Git metadata, package manifests and top-level names only; identifies likely website repositories, excludes the Agency OS checkout itself, sanitizes remote URLs and never runs project scripts or reads environment/credential contents.
+- [x] Added a local inventory preview and batch import UI at dashboard/app/import/bulk-import-form.tsx, preserving the existing single-manifest flow.
+- [x] Added explicit client mapping and bulk assignment for unresolved projects; imports use stable source IDs, avoid duplicate creates on repeat scans, and skip cross-client conflicts.
+- [x] Added project fields for framework, relative source directory, branch, commit and last-scan time. Import refreshes technical metadata while preserving project status, deadlines, budget, notes and manually set website/hosting values.
+- [x] Root .gitignore excludes local generated inventory files.
+- [x] CI now runs scanner tests and builds the dashboard/Prisma Client when relevant files change.
 
-## Pending decisions and work
+## CI and local verification
 
-- [ ] Review and approve `DEFAULT_WEBSITE_ARCHITECTURE.md` before selecting providers or locking implementation architecture.
-- [ ] Confirm Siddaganga Hospital's final production hostname and preferred HTTPS/host variant before implementing canonical URLs or absolute sitemap references.
-- [ ] Address the P1 findings in `SIDDAGANGA_TECHNICAL_SEO_AUDIT.md`: canonical URLs, robots/sitemap, accurate structured data, and social preview image.
-- [ ] Fix the duplicate font preconnect, replace the generic Astro README, and verify doctor profile content.
-- [ ] Add a small automated QA workflow after checking compatibility with the current Astro and Cloudflare deployment setup.
-- [ ] Review owner-supplied optimization/component/animation references when provided.
+- [x] A GitHub Actions run completed successfully for a prior commit containing the scanner and bulk importer changes; the scanner test step and dashboard production build both passed.
+- [ ] A newer commit adds extra scanner filtering, technical metadata fields and preview validation; verify the latest PR CI run after it completes.
+- [ ] User must pull the latest branch and rebuild the local Docker dashboard; database schema changes are applied by the dashboard startup command.
+- [ ] Run the scanner against ~/web-dev and review the generated inventory before importing.
+- [ ] Test first import and second repeated import, existing-project updates, new-client metadata creation, bulk client mapping and cross-client conflict handling in the local dashboard.
+- [ ] Verify Playwright MCP and external skill tools actually start in VS Code. Their repository instructions alone do not install them.
+- [ ] Copy the six document templates into the next client's private website repository and complete them from confirmed requirements; the templates are not client-specific approved documents yet.
 
-## Working agreements
+## Next implementation after verification
 
-1. Work one step at a time and keep user-facing updates concise.
-2. Inspect existing work before changing it; preserve approved designs and production behavior.
-3. Never claim a file, feature, permission, test, or deployment is complete without verification.
-4. Keep credentials, secrets, patient data, and private client information out of this repository.
-5. Update this file after each meaningful session with completed work, blockers, decisions, and the exact next step.
-6. Record durable agency decisions in `DECISIONS.md`; record visual and responsive specifications in `design.md`.
-7. In a new chat, begin by reading this file and relevant project documents.
-8. Treat the client lifecycle as approved but adaptable; document meaningful revisions.
-
-## Current caution
-
-The agency OS repository remains public by the owner's choice. Keep it limited to reusable blank templates and process documentation. Do not store real client records, private invoices, bank/UPI details, credentials, patient information, applicant CVs, or commercially sensitive client-specific material.
-
-The agency OS is a documentation foundation, not a working website starter or automated billing system. Invoice templates contain placeholders and must not be sent as real invoices.
+- [ ] Add an auditable import change log and clearer conflict details.
+- [ ] Add reusable project-specific task templates (marketing site, hospital website, landing page) with a preview/apply step.
+- [ ] Add local project health summaries for missing metadata, upcoming maintenance and overdue tasks.
+- [ ] Keep automated reminders and backups out of scope until the user chooses a cadence and a reliable local execution strategy.
 
 ## Exact next step
 
-Confirm the final public domain and preferred HTTPS/host variant for Siddaganga Hospital. This is required before adding canonical URLs or absolute sitemap references. Then implement the highest-priority SEO fixes in the hospital repository in a controlled change and verify the production build before deployment.
+Pull the feature branch, run the scanner test suite, scan ~/web-dev to ~/ventablk-repository-inventory.json, inspect that file, then rebuild the dashboard and test one or two fictional repository imports locally.

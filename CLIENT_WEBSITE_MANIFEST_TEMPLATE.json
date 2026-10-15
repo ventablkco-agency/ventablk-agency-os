@@ -1,0 +1,18 @@
+{
+  "client": {
+    "name": "Project contact",
+    "organization": "Example Hospital",
+    "email": "",
+    "phone": "",
+    "website": ""
+  },
+  "project": {
+    "name": "Hospital website",
+    "websiteUrl": "https://example.com",
+    "repositoryUrl": "https://github.com/your-agency/example-site",
+    "hosting": "Cloudflare Pages",
+    "status": "DEVELOPMENT",
+    "budget": 25000,
+    "notes": ""
+  }
+}

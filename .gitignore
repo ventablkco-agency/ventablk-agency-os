@@ -1,0 +1,10 @@
+# Generated local inventory may contain workstation paths and client/project names.
+/ventablk-repository-inventory.json
+/agency-repository-inventory.json
+*.local-inventory.json
+
+# Local-only environment and editor artifacts
+.env
+.env.*
+!.env.example
+.DS_Store
