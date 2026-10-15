@@ -1,0 +1,41 @@
+name: Dashboard CI
+
+on:
+  pull_request:
+    paths:
+      - "dashboard/**"
+      - ".github/workflows/dashboard-ci.yml"
+  push:
+    branches:
+      - main
+      - feature/agency-dashboard-foundation
+    paths:
+      - "dashboard/**"
+      - ".github/workflows/dashboard-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dashboard
+    env:
+      DATABASE_URL: postgresql://agency:ci-password@127.0.0.1:5432/agency?schema=public
+      DASHBOARD_PASSWORD: ci-only-placeholder-password
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Generate Prisma client
+        run: npx prisma generate
+      - name: Build dashboard
+        run: npm run build
