@@ -18,7 +18,8 @@ This repository documents the repeatable processes and reusable standards for `v
 - [Default website architecture](DEFAULT_WEBSITE_ARCHITECTURE.md) — approval still pending.
 - [Website reference library](WEBSITE_REFERENCE_LIBRARY.md) — Matter.js and UI/animation references.
 - [Interaction asset library](docs/INTERACTION_ASSETS.md) — original supplied UseAnimations menu Lottie files.
-- [Interaction asset reuse skill](skills/ventablk-interaction-assets/SKILL.md) — required reuse/accessibility guidance for website work.
+- [Website workflow skill](skills/ventablk-website-workflow/SKILL.md) — required acceptance gates for every site.
+- [Interaction asset reuse skill](skills/ventablk-interaction-assets/SKILL.md) — approved menu animations and accessibility guidance.
 
 ## Client lifecycle documents
 
