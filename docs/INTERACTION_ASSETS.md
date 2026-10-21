@@ -1,6 +1,6 @@
 # UseAnimations Menu Motion Assets
 
-Original files supplied by the agency owner in three archives and stored byte-for-byte here.
+Original supplied ZIP files are preserved byte-for-byte in `assets/useanimations/menu/source-archives/`; extracted working copies are stored alongside them for convenient implementation.
 
 | File | Source archive | Dimensions / duration | Intended role |
 |---|---|---|---|
