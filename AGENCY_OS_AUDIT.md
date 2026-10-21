@@ -71,3 +71,16 @@ The agency OS has a strong documented client lifecycle and a good baseline for r
 ## Audit conclusion
 
 **Status: Good documentation foundation; not yet a complete operational or technical production system.** The immediate next step is to repair the repository index and progress handoff, then begin a real website starter. Do not confuse documented requirements with implemented or tested features.
+
+
+## 2026-10-21 reassessment — Creative website quality workflow
+
+The MIT-licensed `juliobsz/skills` repository was reviewed and vendored at `vendor/juliobsz-skills/`, pinned to upstream commit `ea8f1455c2b0e71469d4ecfd32f47862b834d2d0`. The OS now includes `/awwwards` for the build process and `/jury` for evidence-based critique, along with `docs/AWWWARDS_SKILLS_INTEGRATION.md` and `AGENCY_WEBSITE_QUALITY_GATE.md`. The workflow, README, checklist, decision log, progress tracker, and reference library now make their use mandatory for new sites and substantial redesigns.
+
+- [x] Vendor upstream skills, selected references/scripts, and MIT license.
+- [x] Add mandatory project-local design brief/art direction artifact and a multi-pass screenshot/critic gate.
+- [x] Require explicit preview URL + commit verification and preserve the existing no-production-merge-without-approval rule.
+- [ ] Run the vendored scripts in a local project environment with compatible Node, Playwright, Chromium and axe-core. Repository presence is verified; script execution compatibility is not yet verified.
+- [ ] Use the jury skill to establish an evidence-backed baseline for the Ventablk.co website before rebuilding the hero, retaining the existing navbar as an explicit keep item.
+
+**Residual limitation:** these additions strengthen the repeatable workflow but do not automatically make every agent environment load a skill. The repo now contains the mandatory links in its root README/checklist and required website workflow; any agent environment that has its own skills registry must also register or be pointed at the local skills. Nor does a passing CI build prove visual quality: browser evidence and the jury gate still need to be run.

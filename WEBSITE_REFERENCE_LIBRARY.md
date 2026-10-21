@@ -70,3 +70,5 @@ When the agency owner shares links:
 ## Change log
 
 - 15 October 2026: Initial register created; awaiting repository, optimization, component, and animation links from the agency owner.
+
+- 21 October 2026: Vendored the MIT-licensed `juliobsz/skills` `/awwwards` and `/jury` skills, added the mandatory integration contract and quality gate, and wired both skills into the required website workflow.
