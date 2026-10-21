@@ -1,11 +1,21 @@
 ---
 name: ventablk-website-workflow
-description: Required workflow gates for Ventablk website implementation, including reuse of approved animation assets.
+description: Mandatory Ventablk website workflow. Invoke the vendored awwwards build skill for every new site or substantial redesign and the jury skill for evidence-based critique before release.
 ---
 
 # Ventablk website workflow
 
 Apply this skill whenever building or materially revising a Ventablk website or client website delivered through Ventablk.
+
+## Mandatory creative build and jury skills
+
+**Before every new website, full redesign, substantial visual redesign, or material landing-page rebuild, read and follow both integration contracts and skills:**
+- `docs/AWWWARDS_SKILLS_INTEGRATION.md`
+- `vendor/juliobsz-skills/awwwards/SKILL.md` (read its relevant reference files as directed)
+- `AGENCY_WEBSITE_QUALITY_GATE.md`
+- Before acceptance/release, run `vendor/juliobsz-skills/jury/SKILL.md` using browser screenshots and report evidence.
+
+These are required project gates, not optional reference links. Create a project-local `DESIGN.md` before building. Complete concept, art direction, genericness test, production-browser screenshots, at least two QA/fix passes, and an evidence-based critic scorecard. Keep the current project stack and all Ventablk-specific brand/owner constraints. Do not blindly add animation, WebGL or dependencies. If a tool or independent critic is unavailable, document the limitation and never claim it ran.
 
 ## Required first checks
 
@@ -30,6 +40,12 @@ Implementation must remain accessible:
 Matter.js is approved as an optional 2D physics dependency for interaction concepts where physics has a clear design purpose. It is not a 3D rendering engine and must not be added indiscriminately. Keep decorative canvases non-interactive, pause/clean up their simulation and honor reduced motion. Prefer CSS/Framer Motion for simpler transitions.
 
 ## Acceptance gate
+
+Apply all applicable checks in `AGENCY_WEBSITE_QUALITY_GATE.md`. Additionally:
+- Do not mark the design as approved based only on code/build success; inspect actual desktop/mobile/reduced-motion screenshots.
+- Provide the exact successful Cloudflare preview URL and reviewed commit SHA in the response after every correction/deployment.
+- Production merge remains prohibited until the owner explicitly approves it.
+
 
 Before marking a site change complete:
 - Run `npm run build` and resolve all type/build errors.

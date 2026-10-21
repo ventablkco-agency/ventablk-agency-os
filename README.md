@@ -10,6 +10,12 @@ This repository documents the repeatable processes and reusable standards for `v
 4. **[Client lifecycle](CLIENT_LIFECYCLE.md)** — end-to-end workflow.
 5. **[Decision log](DECISIONS.md)** — durable agency decisions and rationale.
 
+## Website design, implementation and critique standards
+
+- [Awwwards skills integration contract](docs/AWWWARDS_SKILLS_INTEGRATION.md) — mandatory use of the vendored `/awwwards` build skill and `/jury` critique skill for every new website and substantial redesign.
+- [Agency website quality gate](AGENCY_WEBSITE_QUALITY_GATE.md) — pre-build, visual QA, evidence, preview and release gates.
+- [Vendored upstream skills](vendor/juliobsz-skills/README.md) — upstream provenance, pinned snapshot and MIT license.
+
 ## Core website standards
 
 - [Design specification](design.md)

@@ -34,3 +34,11 @@ Record durable agency-wide decisions here. Add a date, decision, rationale, and 
 - **Safeguard:** Do not collect patient/health data through an ordinary marketing form. Do not commit secrets or submissions to Git.
 - **Review trigger:** Project requirements, client constraints, provider pricing/limits, privacy obligations, or team capabilities change.
 - **Status:** Recommended default; approval for the architecture framework is pending.
+
+
+## 2026-10-21 — Mandatory creative build and blind critique for website work
+
+- **Decision:** Use the MIT-licensed, pinned `juliobsz/skills` `awwwards` skill for every new website or substantial redesign and the `jury` skill for evidence-based visual/technical critique before release. The skills and referenced scripts are vendored under `vendor/juliobsz-skills/`.
+- **Rationale:** Enforce distinct concepts, written art direction, a genericness check, production-browser evidence, independent critique, and at least two QA/fix passes. The existing OS has strong technical standards, but its website workflow did not operationalize that creative direction and blind visual-critique loop.
+- **Guardrails:** Preserve approved brand/client constraints; keep the existing stack unless separately justified; do not add effects/dependencies without purpose; retain technical SEO, accessibility, privacy, performance, scope and owner-approval gates.
+- **Review trigger:** Upstream skill update, license/workflow changes, CI/tooling incompatibility, or production lessons. Refresh only after reviewing upstream diffs.

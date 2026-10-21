@@ -15,6 +15,8 @@ Use this index to find the correct operating document at each stage. Checklists 
 
 ## 3. Design and content
 - [ ] Apply [design.md](design.md) for responsive design, visual consistency, and handoff.
+- [ ] For every new site/substantial redesign, read [AWWWARDS_SKILLS_INTEGRATION.md](docs/AWWWARDS_SKILLS_INTEGRATION.md), follow `vendor/juliobsz-skills/awwwards/SKILL.md`, create a project-local `DESIGN.md`, and use [AGENCY_WEBSITE_QUALITY_GATE.md](AGENCY_WEBSITE_QUALITY_GATE.md).
+- [ ] Before acceptance/release, run `vendor/juliobsz-skills/jury/SKILL.md` on production-build browser evidence, complete at least two QA/fix passes, and document scores/limitations.
 - [ ] Use [DESIGN_CONTENT_APPROVAL_WORKFLOW.md](DESIGN_CONTENT_APPROVAL_WORKFLOW.md) to record approval gates and consolidated feedback.
 - [ ] Keep doctor credentials, service details, clinical claims, photos, and testimonials verified and approved.
 

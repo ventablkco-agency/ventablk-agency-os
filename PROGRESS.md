@@ -1,6 +1,6 @@
 # VentaBlk Co. — Progress Tracker
 
-Last updated: 2026-10-15
+Last updated: 2026-10-21
 
 ## Current goal
 
@@ -29,6 +29,9 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - [x] Created `DECISIONS.md` for durable agency-wide decisions.
 - [x] Added billing, maintenance, invoice specification, invoice HTML, and placeholder PDF template. These remain templates and are not ready to issue as real invoices.
 - [x] Added `WEBSITE_REFERENCE_LIBRARY.md` for owner-supplied optimization repositories and component/animation references.
+- [x] Reviewed and vendored the MIT-licensed `juliobsz/skills` `/awwwards` build skill and `/jury` evidence-based critique skill, including their references and scripts under `vendor/juliobsz-skills/`.
+- [x] Added `docs/AWWWARDS_SKILLS_INTEGRATION.md` and `AGENCY_WEBSITE_QUALITY_GATE.md`.
+- [x] Updated the required website workflow skill, README, checklist, decision log and reference library so concept/art-direction/visual-critique gates are mandatory for future website work.
 - [x] Audited agency OS documentation and repository navigation; findings are in `AGENCY_OS_AUDIT.md`.
 - [x] Repaired README links and added `CHECKLIST.md` as the central workflow index.
 - [x] Per owner instruction, skipped the reusable website starter.
@@ -42,6 +45,8 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - [ ] Address the P1 findings in `SIDDAGANGA_TECHNICAL_SEO_AUDIT.md`: canonical URLs, robots/sitemap, accurate structured data, and social preview image.
 - [ ] Fix the duplicate font preconnect, replace the generic Astro README, and verify doctor profile content.
 - [ ] Add a small automated QA workflow after checking compatibility with the current Astro and Cloudflare deployment setup.
+- [ ] Validate the vendored audit/screenshot scripts locally with Node, Playwright, Chromium and axe-core; document OS-specific setup differences before the next website rebuild.
+- [ ] Start the Ventablk.co hero redesign under the new workflow: write a project-local `DESIGN.md`, run the `/jury` baseline against the current production build/preview, and explicitly preserve the navbar as a retained component.
 - [ ] Review owner-supplied optimization/component/animation references when provided.
 
 ## Working agreements
@@ -59,7 +64,7 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 
 The agency OS repository remains public by the owner's choice. Keep it limited to reusable blank templates and process documentation. Do not store real client records, private invoices, bank/UPI details, credentials, patient information, applicant CVs, or commercially sensitive client-specific material.
 
-The agency OS is a documentation foundation, not a working website starter or automated billing system. Invoice templates contain placeholders and must not be sent as real invoices.
+The agency OS is a documentation foundation with vendored creative-build/critique skills and defined QA scripts; local runtime/tool compatibility still needs validation before claiming those scripts ran. It is not a working website starter or automated billing system. Invoice templates contain placeholders and must not be sent as real invoices.
 
 ## Exact next step
 
