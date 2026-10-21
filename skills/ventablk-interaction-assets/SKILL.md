@@ -7,14 +7,14 @@ description: Reuse approved UseAnimations menu Lottie files and the optional Mat
 
 ## Original source assets
 
-Use the original supplied files stored in `assets/useanimations/menu/`. Do not trace/redraw/substitute homemade icons when these assets are intended.
+The original supplied ZIP archives are preserved byte-for-byte under `assets/useanimations/menu/source-archives/`; extracted working copies are stored in `assets/useanimations/menu/`. If exact source preservation matters, treat the ZIP archives as canonical. Do not trace/redraw/substitute homemade icons when these assets are intended.
 
 - `menu-v2.json` — 32×32 Lottie, 30 fps, 60 frames; line-to-cross transition.
 - `menu-v3.json` — 32×32 Lottie, 30 fps, 45 frames; burger transition.
 - `menu-v4.json` — 32×32 Lottie, 30 fps, 21 frames; compact burger transition.
 - `menu.svg` — original static menu glyph supplied in all three ZIPs (identical contents).
 
-The three SVG copies in the uploaded archives were byte-identical, so store one canonical SVG and keep every distinct JSON file unchanged.
+The three SVG copies in the uploaded archives were byte-identical, so one extracted SVG is kept. The three ZIP archives preserve all original JSON data unchanged. Validate working JSON before using it.
 
 ## Reuse policy
 
