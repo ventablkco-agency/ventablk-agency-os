@@ -22,3 +22,7 @@ Original files supplied by the agency owner in three archives and stored byte-fo
 - Repository: https://github.com/liabru/matter-js
 - Intended use: opt-in 2D physics interactions, not 3D device rendering.
 - Project needs to test reduced motion, hidden-tab pause, responsive canvas, and performance before release.
+
+## Current website implementation
+
+The Ventablk website feature branch `feature/matterjs-useanimations-menu` stores the same original assets under `public/animations/menu/` and wires `menu-v4.json` into the responsive mobile navigation. The menu button has an accessible label/expanded state, closes on Escape, outside click and link selection, and uses a static fallback when reduced motion is requested. Review the current implementation before copying because the Lottie player is currently loaded from its upstream browser CDN; prefer a pinned, locally bundled package for a production hardening pass.
