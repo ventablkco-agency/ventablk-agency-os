@@ -14,7 +14,8 @@ Add one entry for every link the agency owner shares.
 
 | Name | Type | URL | What to reuse / learn | License / usage notes | Compatibility / review | Status |
 |---|---|---|---|---|---|---|
-| To be added | Optimization repository / component library / animation reference / tool | | | Verify before use | Check stack, accessibility, performance, maintenance | Pending |
+| Matter.js | 2D physics engine | https://github.com/liabru/matter-js | Optional physics-driven decorative motion; not a 3D renderer | MIT; retain license notice if redistributing substantial code; verify package version | Evaluate frame cost, reduced-motion, pause on hidden tab, responsive canvas, no pointer interception | Added to website feature branch; validate in project before wider reuse |
+| UseAnimations menu assets | Lottie menu button assets supplied as ZIPs by agency owner | https://useanimations.com/ | Use original JSON menu variants; choose one variant per project and animate actual menu toggle | Preserve upstream terms and asset license; confirm current UseAnimations terms before commercial client release | Lottie player is an additional dependency; accessible button and static/reduced-motion fallback required | Original assets stored in Agency OS library |
 
 ## 2. Categories
 
