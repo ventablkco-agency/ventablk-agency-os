@@ -16,7 +16,9 @@ This repository documents the repeatable processes and reusable standards for `v
 - [Website technical standard](WEBSITE_TECHNICAL_STANDARD.md)
 - [Website project blueprint](WEBSITE_PROJECT_BLUEPRINT.md)
 - [Default website architecture](DEFAULT_WEBSITE_ARCHITECTURE.md) — approval still pending.
-- [Website reference library](WEBSITE_REFERENCE_LIBRARY.md) — add owner-supplied optimization repositories and UI/animation links here.
+- [Website reference library](WEBSITE_REFERENCE_LIBRARY.md) — Matter.js and UI/animation references.
+- [Interaction asset library](docs/INTERACTION_ASSETS.md) — original supplied UseAnimations menu Lottie files.
+- [Interaction asset reuse skill](skills/ventablk-interaction-assets/SKILL.md) — required reuse/accessibility guidance for website work.
 
 ## Client lifecycle documents
 
