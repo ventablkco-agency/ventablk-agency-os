@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff">
+<title>Ventablk — Scroll Based Velocity</title>
+<meta name="description" content="Interactive preview of Ventablk's reusable scroll-based velocity text marquee component.">
+<style>
+:root{color-scheme:light;--ink:#171717;--muted:#737373;--line:#e8e8e8;--soft:#f7f7f5}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{width:min(1040px,calc(100% - 40px));margin:auto;padding:56px 0}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:650}
+h1{font-size:clamp(32px,5vw,52px);letter-spacing:-.055em;line-height:1.04;margin:16px 0 12px;font-weight:600}
+p{max-width:640px;font-size:14px;line-height:1.7;color:#666}
+a{color:inherit;text-underline-offset:3px}.top{display:flex;justify-content:space-between;align-items:start;gap:24px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.link{font-size:12px;white-space:nowrap}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0}
+button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font:inherit;font-size:12px;cursor:pointer}
+button:hover{background:var(--soft)}button:focus-visible,input:focus-visible{outline:2px solid #171717;outline-offset:3px}
+label{font-size:12px;color:#555}input{accent-color:#171717;vertical-align:middle}
+.demo{overflow:hidden;border:1px solid var(--line);border-radius:14px;padding:34px 0;background:#fff;margin:24px 0}
+.marquee-viewport{width:100%;overflow:hidden;white-space:nowrap;mask-image:linear-gradient(to right,transparent,black 7%,black 93%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 7%,black 93%,transparent)}
+.track{display:flex;width:max-content;will-change:transform}
+.item{flex:none;white-space:nowrap;margin-right:26px;font-size:clamp(32px,7vw,76px);font-weight:700;letter-spacing:-.055em;line-height:1.15}
+.symbol{font-size:.55em;vertical-align:middle;margin:0 .55em;color:#999}
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+.tile{border:1px solid var(--line);border-radius:12px;padding:16px}.tile strong{font-size:12px;display:block;margin-bottom:7px}.tile span{font-size:12px;line-height:1.6;color:#777}
+.note{margin-top:24px;border:1px solid var(--line);border-radius:12px;padding:16px;font-size:12px;line-height:1.7;color:#777}
+@media(max-width:680px){main{padding-top:32px}.top{flex-direction:column}.info{grid-template-columns:1fr}.demo{padding:26px 0}}
+@media(prefers-reduced-motion:reduce){.track{transform:none!important}}
+</style>
+</head>
+<body><main>
+<header class="top"><div><div class="eyebrow">Ventablk Agency OS / Component preview</div><h1>Scroll Based Velocity.</h1><p>Scroll the page to accelerate the moving text. The marquee also responds to scroll direction. This standalone preview demonstrates the behavior of the reusable React component.</p></div><a class="link" href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/components/ui/scroll-based-velocity.tsx">Open React source ↗</a></header>
+<div class="controls"><button id="toggle" type="button">Pause animation</button><label for="speed">Base speed <strong id="speedValue">5</strong></label><input id="speed" type="range" min="1" max="12" value="5"><button id="reset" type="button">Reset speed</button></div>
+<section class="demo" aria-label="Scroll velocity animation preview"><div class="marquee-viewport"><div class="track" id="track" role="img" aria-label="Velocity scroll, design in motion"><span class="item">VELOCITY SCROLL <span class="symbol">✳</span> DESIGN IN MOTION <span class="symbol">✳</span></span><span class="item" aria-hidden="true">VELOCITY SCROLL <span class="symbol">✳</span> DESIGN IN MOTION <span class="symbol">✳</span></span><span class="item" aria-hidden="true">VELOCITY SCROLL <span class="symbol">✳</span> DESIGN IN MOTION <span class="symbol">✳</span></span><span class="item" aria-hidden="true">VELOCITY SCROLL <span class="symbol">✳</span> DESIGN IN MOTION <span class="symbol">✳</span></span></div></div></section>
+<div class="info"><div class="tile"><strong>Scroll-reactive</strong><span>Page scroll velocity temporarily accelerates the base movement.</span></div><div class="tile"><strong>Direction-aware</strong><span>The text direction responds to whether you scroll up or down.</span></div><div class="tile"><strong>Minimal dependencies</strong><span>This preview is standalone HTML. The production component uses React and Framer Motion.</span></div></div>
+<div class="note"><strong>Production component:</strong> copy <code>components/ui/scroll-based-velocity.tsx</code> into a React/Next.js project and install Framer Motion. The preview is a demonstration, not the production React bundle. Reduced-motion preferences are respected by the production component.</div>
+</main>
+<script>
+(function(){
+const track=document.getElementById('track'), viewport=track.parentElement, speed=document.getElementById('speed'), speedValue=document.getElementById('speedValue'), toggle=document.getElementById('toggle'), reset=document.getElementById('reset');
+let baseSpeed=5, x=0, lastTime=0, lastScrollY=window.scrollY, smoothedVelocity=0, paused=false, unitWidth=0, direction=1, raf=0;
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+function measure(){const first=track.children[0];unitWidth=first?first.getBoundingClientRect().width+parseFloat(getComputedStyle(first).marginRight||0):1;}
+function frame(now){
+ if(!lastTime)lastTime=now;
+ const dt=Math.min((now-lastTime)/1000,.04);lastTime=now;
+ const current=window.scrollY, velocity=dt?(current-lastScrollY)/dt:0;lastScrollY=current;
+ smoothedVelocity=smoothedVelocity*.84+velocity*.16;
+ if(!paused&&!reduced.matches&&unitWidth>0){
+   if(Math.abs(smoothedVelocity)>12)direction=smoothedVelocity>0?1:-1;
+   const boost=Math.min(5,Math.abs(smoothedVelocity)/240);
+   x+=direction*baseSpeed*20*dt*(1+boost);
+   x=((x%unitWidth)+unitWidth)%unitWidth;
+   track.style.transform='translate3d('+(-x)+'px,0,0)';
+ }
+ raf=requestAnimationFrame(frame);
+}
+speed.addEventListener('input',()=>{baseSpeed=Number(speed.value);speedValue.textContent=String(baseSpeed)});
+toggle.addEventListener('click',()=>{paused=!paused;toggle.textContent=paused?'Resume animation':'Pause animation'});
+reset.addEventListener('click',()=>{baseSpeed=5;speed.value='5';speedValue.textContent='5';x=0;track.style.transform='translate3d(0,0,0)'});
+window.addEventListener('resize',measure);document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else{lastTime=0;raf=requestAnimationFrame(frame)}});
+measure();if(!reduced.matches)raf=requestAnimationFrame(frame);else toggle.disabled=true;
+})();
+</script></body></html>
