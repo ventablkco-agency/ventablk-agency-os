@@ -13,6 +13,8 @@ This repository documents the repeatable processes and reusable standards for `v
 ## Reusable component library
 
 - [Component library gallery](https://ventablkco-agency.github.io/ventablk-agency-os/components/) — categorized visual index for reusable UI and interaction assets (requires GitHub Pages deployment).
+- [Combined interactive preview](https://ventablkco-agency.github.io/ventablk-agency-os/components/preview.html) — menu animations V2/V3/V4 and the ScrollBasedVelocity behavior preview in one page.
+- [How to use React components](components/REACT_COMPONENTS.md) — install, copy, import, configure, and validate reusable React components.
 - [Component registry](COMPONENT_LIBRARY.md) — canonical inventory, readiness status, source links, and intake rules.
 
 ## Website design, implementation and critique standards
