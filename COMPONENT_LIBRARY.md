@@ -43,6 +43,12 @@
 |---|---|---|---|
 | Icon Slide Button | Existing implementation; adapt before cross-project reuse | [Siddaganga Hospital repository](https://github.com/ventablkco-agency/siddaganga-hospital) · source path: `src/components/ui/IconSlideButton.astro` | Astro/CSS pill button with icon slide/reveal, `href`, label, `dark`/`blue`/`light` variants, new-tab option, focus states, and reduced-motion handling. Confirm current source and props before copying. |
 
+### Motion & interaction assets
+
+| Item | Status | Source / preview | Notes |
+|---|---|---|---|
+| ScrollBasedVelocity | Ready for React projects | [Interactive preview](https://ventablkco-agency.github.io/ventablk-agency-os/components/examples/scroll-based-velocity.html) · [React source](components/ui/scroll-based-velocity.tsx) · [Usage guide](components/ui/scroll-based-velocity.md) | React + Framer Motion. Props: `text`, `default_velocity`, `className`, `containerClassName`, `scroll_reactivity`, `ariaLabel`. Respects reduced-motion preferences. Authored as a Ventablk implementation of the described behavior, not a byte-for-byte upstream copy. |
+
 ### Social proof & people
 
 | Item | Status | Source / preview | Notes |
