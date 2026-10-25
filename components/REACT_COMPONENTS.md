@@ -77,34 +77,40 @@ npm install lottie-react
 ```tsx
 "use client";
 
-import { useState } from "react";
-import Lottie from "lottie-react";
+import { useRef, useState } from "react";
+import Lottie, { type LottieRefCurrentProps } from "lottie-react";
 import menuAnimation from "@/assets/useanimations/menu/menu-v2.json";
 
 export function AnimatedMenuButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
+
+  function toggleMenu() {
+    const nextOpen = !isOpen;
+    lottieRef.current?.setDirection(nextOpen ? 1 : -1);
+    lottieRef.current?.play();
+    setIsOpen(nextOpen);
+  }
 
   return (
     <button
       type="button"
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
-      onClick={() => setIsOpen((value) => !value)}
+      onClick={toggleMenu}
     >
       <Lottie
+        lottieRef={lottieRef}
         animationData={menuAnimation}
         autoplay={false}
         loop={false}
-        play={false}
-        // For directional playback, use the Lottie player's documented controls
-        // or wrap the animation with a ref and call playSegments/setDirection.
       />
     </button>
   );
 }
 ```
 
-This snippet illustrates the integration shape only. Confirm the exact playback API for the installed Lottie player version and implement forward/reverse playback before using it in production. The existing static HTML menu preview already has working toggle/reverse behavior.
+This example uses the `lottie-react` ref controls for forward/reverse playback. Verify the animation's first/last frame behavior and test keyboard, focus, and menu-state synchronization in the destination app before production use. The button's expanded state must also control the actual navigation panel.
 
 ## 7. Verify before reusing
 
