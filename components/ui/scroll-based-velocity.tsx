@@ -100,8 +100,9 @@ export function ScrollBasedVelocity({
 
     // Offset stays within one measured copy. The next copy is identical,
     // so resetting by exactly groupWidth is visually seamless.
-    const next = offset.get() + direction.current * speed * safeDelta;
-    const wrapped = ((next % groupWidth) + groupWidth) % groupWidth;
+    const phase = -offset.get();
+    const nextPhase = phase + direction.current * speed * safeDelta;
+    const wrapped = ((nextPhase % groupWidth) + groupWidth) % groupWidth;
     offset.set(-wrapped);
   });
 
