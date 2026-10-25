@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Ventablk — Menu Button Preview</title>
+  <meta name="description" content="Interactive preview of Ventablk Agency OS menu button animation assets V2, V3, and V4.">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
+  <style>
+    :root{color-scheme:light;--ink:#171717;--muted:#737373;--line:#e8e8e8;--paper:#fff;--soft:#f7f7f5}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .shell{width:min(1040px,calc(100% - 40px));margin:0 auto;padding:64px 0 48px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+    .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:650}
+    h1{font-size:clamp(30px,5vw,48px);letter-spacing:-.055em;line-height:1.05;margin:18px 0 12px;font-weight:600}
+    .intro{max-width:570px;font-size:15px;line-height:1.7;color:#666;margin:0}
+    .repo{font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:10px 13px;white-space:nowrap}
+    .repo:hover{color:var(--ink);border-color:#aaa}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}
+    .card{border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0;background:#fff;display:flex;flex-direction:column}
+    .card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    h2{font-size:15px;font-weight:600;letter-spacing:-.02em;margin:0}
+    .tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#777;background:var(--soft);padding:6px 8px;border-radius:999px}
+    .stage{margin:22px 0 18px;min-height:150px;border-radius:12px;background:var(--soft);display:grid;place-items:center}
+    .demo{width:84px;height:84px;display:grid;place-items:center;border:1px solid #e7e7e4;border-radius:50%;background:#fff;cursor:pointer;color:#111;transition:transform .2s,border-color .2s}
+    .demo:hover{transform:scale(1.04);border-color:#c7c7c2}
+    .demo:focus-visible{outline:2px solid #171717;outline-offset:4px}
+    .animation{width:48px;height:48px}
+    .hint{font-size:12px;color:#777;margin:0;text-align:center}
+    .actions{display:flex;gap:8px;margin-top:auto;padding-top:20px}
+    .action{flex:1;border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px 8px;color:#333;font:inherit;font-size:12px;cursor:pointer}
+    .action:hover{background:#f7f7f5}
+    .asset{font-size:11px;line-height:1.6;color:#777;margin:15px 0 0;overflow-wrap:anywhere}
+    .asset a{color:#444;text-decoration:underline;text-underline-offset:3px}
+    .note{margin-top:26px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;font-size:12px;line-height:1.7;color:#666}
+    .note strong{color:#222;font-weight:600}
+    footer{margin-top:30px;display:flex;justify-content:space-between;gap:16px;color:#999;font-size:11px}
+    @media(max-width:720px){.shell{padding-top:36px}.grid{grid-template-columns:1fr}.card{padding:18px}.stage{min-height:130px}.repo{display:none}footer{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <div class="eyebrow">Ventablk Agency OS / Interaction Assets</div>
+        <h1>Menu button studies.</h1>
+        <p class="intro">Three compact menu-to-close animations, ready to inspect and compare. Click a control to play the animation; click it again to reverse it.</p>
+      </div>
+      <a class="repo" href="https://github.com/ventablkco-agency/ventablk-agency-os" target="_blank" rel="noreferrer">View repository ↗</a>
+    </header>
+    <section class="grid" aria-label="Menu button animation versions">
+      <article class="card" data-version="v2">
+        <div class="card-top"><h2>Menu button · V2</h2><span class="tag">Version 02</span></div>
+        <div class="stage"><button class="demo" type="button" aria-label="Play or reverse menu button version 2" aria-pressed="false"><div class="animation" id="animation-v2"></div></button></div>
+        <p class="hint">Click to toggle the animation</p>
+        <div class="actions"><button class="action" data-action="play">Play</button><button class="action" data-action="reset">Reset</button></div>
+        <p class="asset"><a href="./menu-v2.json">menu-v2.json</a> · <a href="./source-archives/menu-v2-source.zip">Source ZIP</a></p>
+      </article>
+      <article class="card" data-version="v3">
+        <div class="card-top"><h2>Menu button · V3</h2><span class="tag">Version 03</span></div>
+        <div class="stage"><button class="demo" type="button" aria-label="Play or reverse menu button version 3" aria-pressed="false"><div class="animation" id="animation-v3"></div></button></div>
+        <p class="hint">Click to toggle the animation</p>
+        <div class="actions"><button class="action" data-action="play">Play</button><button class="action" data-action="reset">Reset</button></div>
+        <p class="asset"><a href="./menu-v3.json">menu-v3.json</a> · <a href="./source-archives/menu-v3-source.zip">Source ZIP</a></p>
+      </article>
+      <article class="card" data-version="v4">
+        <div class="card-top"><h2>Menu button · V4</h2><span class="tag">Version 04</span></div>
+        <div class="stage"><button class="demo" type="button" aria-label="Play or reverse menu button version 4" aria-pressed="false"><div class="animation" id="animation-v4"></div></button></div>
+        <p class="hint">Click to toggle the animation</p>
+        <div class="actions"><button class="action" data-action="play">Play</button><button class="action" data-action="reset">Reset</button></div>
+        <p class="asset"><a href="./menu-v4.json">menu-v4.json</a> · <a href="./source-archives/menu-v4-source.zip">Source ZIP</a></p>
+      </article>
+    </section>
+    <div class="note"><strong>Preview only.</strong> This page loads the existing Lottie JSON files directly from this folder; it does not modify the original animation assets or yet package them as production components. Lottie Web is loaded from a public CDN, so the interactive preview needs an internet connection.</div>
+    <footer><span>VENTABL K / COMPONENT LIBRARY IN PROGRESS</span><span>Lightweight · Responsive · Interactive</span></footer>
+  </main>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.lottie) {
+        document.querySelectorAll('.hint').forEach(function (el) { el.textContent = 'Animation library did not load. Check your internet connection and refresh.'; });
+        return;
+      }
+      document.querySelectorAll('.card').forEach(function (card) {
+        var version = card.dataset.version;
+        var button = card.querySelector('.demo');
+        var anim = lottie.loadAnimation({
+          container: card.querySelector('.animation'),
+          renderer: 'svg',
+          loop: false,
+          autoplay: false,
+          path: './menu-' + version + '.json',
+          rendererSettings: { preserveAspectRatio: 'xMidYMid meet', progressiveLoad: true }
+        });
+        var isOpen = false;
+        var ready = false;
+        anim.addEventListener('DOMLoaded', function () {
+          ready = true;
+          anim.goToAndStop(0, true);
+        });
+        function toggle() {
+          if (!ready) return;
+          isOpen = !isOpen;
+          button.setAttribute('aria-pressed', String(isOpen));
+          anim.setDirection(isOpen ? 1 : -1);
+          anim.play();
+        }
+        button.addEventListener('click', toggle);
+        card.querySelector('[data-action="play"]').addEventListener('click', function () {
+          if (!ready) return;
+          isOpen = !isOpen;
+          button.setAttribute('aria-pressed', String(isOpen));
+          anim.setDirection(isOpen ? 1 : -1);
+          anim.play();
+        });
+        card.querySelector('[data-action="reset"]').addEventListener('click', function () {
+          if (!ready) return;
+          isOpen = false;
+          button.setAttribute('aria-pressed', 'false');
+          anim.setDirection(1);
+          anim.goToAndStop(0, true);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
