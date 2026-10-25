@@ -105,16 +105,6 @@ export function ScrollBasedVelocity({
     offset.set(-wrapped);
   });
 
-  const repeatedContent = (
-    <span
-      className="flex w-max shrink-0 items-center"
-      style={{ whiteSpace: "nowrap" }}
-    >
-      <span className={className}>{text}</span>
-      <span aria-hidden="true" className="mx-6 shrink-0"> {SEPARATOR} </span>
-    </span>
-  );
-
   return (
     <div
       ref={viewportRef}
