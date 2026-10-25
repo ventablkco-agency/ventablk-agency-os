@@ -15,7 +15,7 @@ import {
 export interface ScrollBasedVelocityProps {
   /** Text repeated across the viewport. */
   text: string;
-  /** Base movement speed. Higher values move the text faster. Default: 5. */
+  /** Base movement speed multiplier. Higher values move the marquee faster. Default: 5. */
   default_velocity?: number;
   /** Optional classes applied to the moving text. */
   className?: string;
@@ -27,18 +27,12 @@ export interface ScrollBasedVelocityProps {
   ariaLabel?: string;
 }
 
+const SEPARATOR = "✳";
+
 /**
- * Scroll-reactive text marquee.
- *
- * A lightweight React component that continuously moves repeated text and
- * accelerates/responds to the user's page-scroll velocity. Uses Framer Motion.
- *
- * Usage:
- * <ScrollBasedVelocity
- *   text="Velocity Scroll"
- *   default_velocity={5}
- *   className="text-4xl font-bold tracking-tight md:text-7xl"
- * />
+ * A seamless, scroll-reactive marquee for React and Next.js.
+ * The loop distance is measured from the rendered content rather than guessed
+ * from a percentage, preventing blank gaps as the viewport or text changes.
  */
 export function ScrollBasedVelocity({
   text,
@@ -48,7 +42,12 @@ export function ScrollBasedVelocity({
   scroll_reactivity = true,
   ariaLabel,
 }: ScrollBasedVelocityProps) {
-  const baseX = useMotionValue(0);
+  const viewportRef = React.useRef<HTMLDivElement>(null);
+  const firstGroupRef = React.useRef<HTMLSpanElement>(null);
+  const [repeatCount, setRepeatCount] = React.useState(4);
+  const [groupWidth, setGroupWidth] = React.useState(0);
+  const [viewportWidth, setViewportWidth] = React.useState(0);
+  const offset = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
@@ -61,31 +60,64 @@ export function ScrollBasedVelocity({
     [-5, 0, 5],
     { clamp: false },
   );
-  const x = useTransform(baseX, (value) => `${wrap(-25, -50, value)}%`);
   const direction = React.useRef(1);
   const reduceMotion = useReducedMotion();
 
+  React.useEffect(() => {
+    const viewport = viewportRef.current;
+    const group = firstGroupRef.current;
+    if (!viewport || !group) return;
+
+    const measure = () => {
+      const nextGroupWidth = group.getBoundingClientRect().width;
+      const nextViewportWidth = viewport.getBoundingClientRect().width;
+      if (nextGroupWidth <= 0 || nextViewportWidth <= 0) return;
+
+      setGroupWidth(nextGroupWidth);
+      setViewportWidth(nextViewportWidth);
+      // Keep enough identical copies to cover the viewport even for very short text.
+      setRepeatCount(Math.max(3, Math.ceil(nextViewportWidth / nextGroupWidth) + 2));
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(viewport);
+    observer.observe(group);
+    return () => observer.disconnect();
+  }, [text, className, containerClassName]);
+
   useAnimationFrame((_time, delta) => {
-    if (reduceMotion) return;
+    if (reduceMotion || groupWidth <= 0 || viewportWidth <= 0) return;
 
     const safeDelta = Math.min(delta, 40) / 1000;
-    let moveBy = direction.current * Math.max(0, default_velocity) * safeDelta;
-
+    let speed = Math.max(0, Number.isFinite(default_velocity) ? default_velocity : 5) * 20;
     if (scroll_reactivity) {
       const velocity = velocityFactor.get();
       if (velocity < -0.05) direction.current = -1;
       else if (velocity > 0.05) direction.current = 1;
-
-      moveBy += direction.current * moveBy * Math.min(5, Math.abs(velocity));
+      speed *= 1 + Math.min(5, Math.abs(velocity));
     }
 
-    baseX.set(baseX.get() + moveBy);
+    // Offset stays within one measured copy. The next copy is identical,
+    // so resetting by exactly groupWidth is visually seamless.
+    const next = offset.get() + direction.current * speed * safeDelta;
+    const wrapped = ((next % groupWidth) + groupWidth) % groupWidth;
+    offset.set(-wrapped);
   });
 
-  const copies = React.useMemo(() => Array.from({ length: 4 }, (_, index) => index), []);
+  const repeatedContent = (
+    <span
+      className="flex w-max shrink-0 items-center"
+      style={{ whiteSpace: "nowrap" }}
+    >
+      <span className={className}>{text}</span>
+      <span aria-hidden="true" className="mx-6 shrink-0"> {SEPARATOR} </span>
+    </span>
+  );
 
   return (
     <div
+      ref={viewportRef}
       className={`w-full overflow-hidden ${containerClassName}`.trim()}
       role="img"
       aria-label={ariaLabel ?? text}
@@ -99,26 +131,23 @@ export function ScrollBasedVelocity({
         <motion.div
           aria-hidden="true"
           className="flex w-max flex-nowrap"
-          style={{ x, willChange: "transform" }}
+          style={{ x: offset, willChange: "transform" }}
         >
-          {copies.map((copy) => (
+          {Array.from({ length: repeatCount }, (_, index) => (
             <span
-              key={copy}
-              className={`mr-8 shrink-0 whitespace-nowrap ${className}`.trim()}
+              key={index}
+              ref={index === 0 ? firstGroupRef : undefined}
+              className="flex w-max shrink-0 items-center"
+              style={{ whiteSpace: "nowrap" }}
             >
-              {text}
-              <span aria-hidden="true" className="mx-6">✳</span>
+              <span className={className}>{text}</span>
+              <span aria-hidden="true" className="mx-6 shrink-0"> {SEPARATOR} </span>
             </span>
           ))}
         </motion.div>
       )}
     </div>
   );
-}
-
-function wrap(min: number, max: number, value: number) {
-  const range = max - min;
-  return ((((value - min) % range) + range) % range) + min;
 }
 
 export default ScrollBasedVelocity;
