@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>Ventablk — Component Library</title>
+<meta name="description" content="A categorized index of reusable Ventablk website components, interaction assets, and implementation patterns.">
+<style>
+:root{color-scheme:light;--ink:#171717;--muted:#737373;--line:#e8e8e8;--paper:#fff;--soft:#f7f7f5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{width:min(1080px,calc(100% - 40px));margin:0 auto;padding:56px 0 48px}
+header{padding-bottom:28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:end;gap:24px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:650}
+h1{font-size:clamp(32px,5vw,50px);letter-spacing:-.055em;line-height:1.04;margin:16px 0 12px;font-weight:600}
+.intro{max-width:620px;font-size:15px;line-height:1.7;color:#666;margin:0}
+a{color:inherit;text-underline-offset:3px}.toplink{font-size:12px;color:#555;white-space:nowrap}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:32px 0 14px}
+h2{font-size:17px;letter-spacing:-.03em;margin:0;font-weight:600}.count{font-size:11px;color:#888}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:14px;padding:19px;min-height:174px;display:flex;flex-direction:column;gap:12px}
+.card:hover{border-color:#bdbdbd}.meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tag{font-size:10px;color:#666;background:var(--soft);border-radius:999px;padding:6px 8px;letter-spacing:.04em}
+.status{font-size:10px;color:#666}.card h3{font-size:15px;letter-spacing:-.02em;margin:0;font-weight:600}.card p{font-size:12px;line-height:1.65;color:#777;margin:0}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:4px;font-size:12px}
+.links a{color:#333}.empty{border:1px dashed #ddd;border-radius:14px;padding:18px;color:#888;font-size:12px;line-height:1.7;margin-top:12px}
+footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:11px;line-height:1.7;color:#999}
+@media(max-width:760px){main{padding-top:34px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}header{align-items:start;flex-direction:column}.toplink{white-space:normal}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.card{min-height:0}}
+</style>
+</head>
+<body>
+<main>
+<header><div><div class="eyebrow">Ventablk Agency OS / Internal toolkit</div><h1>Component library.</h1><p class="intro">A calm, categorized index of reusable UI, motion assets, and implementation patterns. Check here before rebuilding something. Each entry should point to its canonical source and a preview.</p></div><a class="toplink" href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/COMPONENT_LIBRARY.md">Open full registry ↗</a></header>
+
+<section>
+<div class="section-head"><h2>Navigation & menus</h2><span class="count">3 animation assets + 2 site components</span></div>
+<div class="grid">
+<article class="card"><div class="meta"><span class="tag">Lottie · V2</span><span class="status">Asset ready</span></div><h3>Menu button V2</h3><p>Menu-to-close animation asset. Inspect the motion before integrating it into a site's navigation.</p><div class="links"><a href="../assets/useanimations/menu/preview.html">Preview all versions ↗</a><a href="../assets/useanimations/menu/menu-v2.json">JSON source</a></div></article>
+<article class="card"><div class="meta"><span class="tag">Lottie · V3</span><span class="status">Asset ready</span></div><h3>Menu button V3</h3><p>Alternate menu button animation for comparing timing and visual style.</p><div class="links"><a href="../assets/useanimations/menu/preview.html">Preview ↗</a><a href="../assets/useanimations/menu/menu-v3.json">JSON source</a></div></article>
+<article class="card"><div class="meta"><span class="tag">Lottie · V4</span><span class="status">Asset ready</span></div><h3>Menu button V4</h3><p>Third menu animation option. Existing asset is not, by itself, a production component wrapper.</p><div class="links"><a href="../assets/useanimations/menu/preview.html">Preview ↗</a><a href="../assets/useanimations/menu/menu-v4.json">JSON source</a></div></article>
+<article class="card"><div class="meta"><span class="tag">Astro</span><span class="status">Adapt before reuse</span></div><h3>Header / navbar</h3><p>Existing project implementation. Review branding, route assumptions, mobile behavior, and accessibility.</p><div class="links"><a href="https://github.com/ventablkco-agency/siddaganga-hospital">Source repository ↗</a><a href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/COMPONENT_LIBRARY.md">Registry notes</a></div></article>
+<article class="card"><div class="meta"><span class="tag">Astro</span><span class="status">Adapt before reuse</span></div><h3>Menu overlay</h3><p>Existing navigation overlay candidate. Validate focus management, Escape behavior, and responsive states.</p><div class="links"><a href="https://github.com/ventablkco-agency/siddaganga-hospital">Source repository ↗</a><a href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/COMPONENT_LIBRARY.md">Registry notes</a></div></article>
+</div>
+</section>
+
+<section>
+<div class="section-head"><h2>Buttons & calls to action</h2><span class="count">1 known implementation</span></div>
+<div class="grid">
+<article class="card"><div class="meta"><span class="tag">Astro + CSS</span><span class="status">Adapt before reuse</span></div><h3>Icon Slide Button</h3><p>Pill-shaped CTA with icon slide/reveal and dark, blue, and light variants; includes focus and reduced-motion handling.</p><div class="links"><a href="https://github.com/ventablkco-agency/siddaganga-hospital">Source repository ↗</a><a href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/COMPONENT_LIBRARY.md">Props & reuse notes</a></div></article>
+</div>
+</section>
+
+<section>
+<div class="section-head"><h2>Social proof & people</h2><span class="count">1 item to capture</span></div>
+<div class="grid">
+<article class="card"><div class="meta"><span class="tag">Framer / code</span><span class="status">Source needed</span></div><h3>AvatarCircles</h3><p>Overlapping circular avatars with a final count circle (such as +1200) and subtle hover raise/scale behavior.</p><div class="links"><a href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/COMPONENT_LIBRARY.md">See intake checklist ↗</a></div></article>
+</div>
+</section>
+
+<section>
+<div class="section-head"><h2>More categories</h2><span class="count">Ready for intake</span></div>
+<div class="grid">
+<article class="card"><div class="meta"><span class="tag">Page sections</span></div><h3>Hero, feature sections & CTA</h3><p>Reusable page compositions, with project-specific copy and media separated from layout.</p><div class="links"><a href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/COMPONENT_LIBRARY.md">Registry ↗</a></div></article>
+<article class="card"><div class="meta"><span class="tag">Motion</span></div><h3>Scroll & hover interactions</h3><p>Scroll reveals, parallax, transitions, and camera-journey patterns, each with motion preferences documented.</p><div class="links"><a href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/COMPONENT_LIBRARY.md">Registry ↗</a></div></article>
+<article class="card"><div class="meta"><span class="tag">Technical patterns</span></div><h3>SEO, accessibility & performance</h3><p>Repeatable implementation patterns that should ship with every suitable client website.</p><div class="links"><a href="https://github.com/ventablkco-agency/ventablk-agency-os/blob/main/COMPONENT_LIBRARY.md">Registry ↗</a></div></article>
+</div>
+</section>
+<div class="empty"><strong>Library rule:</strong> “Built before” is not the same as “ready to reuse.” If the actual source is missing, keep the item marked as source needed. Do not duplicate files until the canonical source and license/provenance are clear.</div>
+<footer>VENTABL K / COMPONENT LIBRARY · Light, responsive, and intentionally minimal.<br>Interactive animation previews load Lottie Web from a public CDN and require an internet connection.</footer>
+</main>
+</body>
+</html>
