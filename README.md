@@ -10,6 +10,11 @@ This repository documents the repeatable processes and reusable standards for `v
 4. **[Client lifecycle](CLIENT_LIFECYCLE.md)** — end-to-end workflow.
 5. **[Decision log](DECISIONS.md)** — durable agency decisions and rationale.
 
+## Reusable component library
+
+- [Component library gallery](https://ventablkco-agency.github.io/ventablk-agency-os/components/) — categorized visual index for reusable UI and interaction assets (requires GitHub Pages deployment).
+- [Component registry](COMPONENT_LIBRARY.md) — canonical inventory, readiness status, source links, and intake rules.
+
 ## Website design, implementation and critique standards
 
 - [Awwwards skills integration contract](docs/AWWWARDS_SKILLS_INTEGRATION.md) — mandatory use of the vendored `/awwwards` build skill and `/jury` critique skill for every new website and substantial redesign.
