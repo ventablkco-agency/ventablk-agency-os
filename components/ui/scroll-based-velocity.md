@@ -74,8 +74,8 @@ export function VelocityBand() {
 
 ## Behavior and accessibility
 
-- Repeats the supplied text to create a seamless horizontal band.
-- Uses Framer Motion scroll velocity and a spring to smooth acceleration.
+- Repeats the supplied text to create a seamless horizontal band. The loop distance is measured from the actual rendered copy width, and enough copies are rendered to cover the viewport, including short text and responsive resizing.
+- Uses Framer Motion scroll velocity and a spring to smooth acceleration. Increasing `default_velocity` increases base speed; scroll movement can temporarily boost speed and reverse direction.
 - Honors the user's reduced-motion preference by rendering static text instead.
 - Decorative repeats are hidden from assistive technology; the outer region has an accessible label.
 - Keep the text short enough to work well on mobile, and test it with the typography and background of the destination site.
@@ -84,7 +84,7 @@ export function VelocityBand() {
 
 [Open the browser preview](https://ventablkco-agency.github.io/ventablk-agency-os/components/examples/scroll-based-velocity.html) after GitHub Pages has deployed the current `main` branch.
 
-The browser preview demonstrates the same interaction in a standalone HTML file. The reusable production component remains the React/TypeScript file linked above.
+The browser previews demonstrate the interaction in standalone HTML. Their speed controls are multipliers: a larger value moves faster. The loop distance is measured from one rendered copy and wraps by that exact distance to avoid blank gaps. The reusable production component remains the React/TypeScript file linked above.
 
 ## Source and license
 
