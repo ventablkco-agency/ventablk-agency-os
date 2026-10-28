@@ -34,6 +34,10 @@ This repository documents the repeatable processes and reusable standards for `v
 - [Website workflow skill](skills/ventablk-website-workflow/SKILL.md) — required acceptance gates for every site.
 - [Interaction asset reuse skill](skills/ventablk-interaction-assets/SKILL.md) — approved menu animations and accessibility guidance.
 
+## Figma document design system
+
+- [Canonical Figma document template library](FIGMA_DOCUMENT_TEMPLATE_LIBRARY.md) — master Figma links, approved logo source, alternating theme rules, client-logo placeholders, and the required workflow for future client documents.
+
 ## Client lifecycle documents
 
 - [Client information template](CLIENT_INFORMATION_TEMPLATE.md)
