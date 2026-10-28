@@ -82,7 +82,7 @@ Examples of service descriptions may include website design/development mileston
 
 ## 3A. Recurring maintenance invoice rules
 
-- Generate one invoice per active client per agreed billing period; monthly by default for monthly maintenance contracts.
+- Generate one invoice per active client for the billing period and cadence agreed in that client's maintenance schedule. Do not assume monthly billing unless the client agreement says monthly.
 - Show the service period explicitly, e.g. “Website maintenance — 1–31 October 2026”.
 - Use a unique sequential invoice number that follows the selected accounting process.
 - Calculate subtotal/tax/total and QR amount from the same invoice data source to avoid mismatches.
