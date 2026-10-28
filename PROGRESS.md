@@ -1,6 +1,6 @@
 # VentaBlk Co. — Progress Tracker
 
-Last updated: 2026-10-21
+Last updated: 2026-10-28
 
 ## Current goal
 
@@ -17,6 +17,10 @@ Build a reliable, documented operating system for VentaBlk Co.'s hospital websit
 - Repository visibility was verified as **public** on 2026-10-15. Do not add real client-specific or commercially sensitive information while it remains public.
 
 ## Completed
+
+- [x] Rebuilt the Ventablk Figma proposal master as five reusable slides with alternating black/light themes, bold typography, and client-logo placeholders; verified the slide layouts visually.
+- [x] Rebuilt the core document layout workspace (quotation, two-page service agreement, invoice, and welcome email) with alternating document themes and client-logo placeholders.
+- [x] Added `FIGMA_DOCUMENT_TEMPLATE_LIBRARY.md` as the canonical source of Figma links, approved logo source, theme rules, and the required workflow for future client documents; linked it from README and CHECKLIST.
 
 - [x] Confirmed repository access and committed `README.md`.
 - [x] Added this progress tracker as the persistent session handoff.
@@ -68,4 +72,4 @@ The agency OS is a documentation foundation with vendored creative-build/critiqu
 
 ## Exact next step
 
-Confirm the final public domain and preferred HTTPS/host variant for Siddaganga Hospital. This is required before adding canonical URLs or absolute sitemap references. Then implement the highest-priority SEO fixes in the hospital repository in a controlled change and verify the production build before deployment.
+For the document library, finish production readiness: (1) replace the typed wordmark in the standalone document layouts with the actual approved vector logo asset from the canonical brand file, (2) export and inspect client-ready PDFs for the quotation, agreement, invoice, and welcome/onboarding pack, (3) validate the quotation/invoice fields and calculations, and (4) have contract and invoice wording reviewed by qualified legal/accounting professionals before real use. Continue the separate Siddaganga SEO work only after confirming the production hostname and HTTPS variant.
