@@ -1,5 +1,5 @@
 # VentaBlk Co. — Invoice Template Specification
-**Status:** Design requirements approved; payment details pending  
+**Status:** Reusable invoice specification — commercial rules clarified; issuer/payment details and accounting review remain pending  
 **Primary format:** A4 portrait PDF  
 **Visual reference:** Owner-provided minimalist black invoice and editorial-style invoice examples
 
@@ -46,7 +46,7 @@ Columns:
 - Tax (when applicable)
 - Amount
 
-Examples of service descriptions may include website design, development milestone, website maintenance — October 2026, hosting/managed service if contractually included, or an approved additional change request. Only invoice actual contracted work.
+Examples of service descriptions may include website design/development milestone, logo/brand design, content writing, SEO/AEO/GEO setup, Google Business Profile optimisation, or website maintenance for a stated service period. Invoice only work that was agreed and actually due under the proposal/agreement. Keep one-time project milestones separate from recurring maintenance line items.
 
 ### Totals
 - Subtotal
@@ -73,7 +73,14 @@ Examples of service descriptions may include website design, development milesto
 - Contact for invoice questions.
 - Legal/tax text only after confirmation with the agency's accountant.
 
-## 3. Recurring maintenance invoice rules
+## 3. Project and recurring maintenance invoice rules
+
+- A project invoice may request the agreed 50% advance before work begins or the remaining 50% before launch; use the milestones actually accepted in that client's proposal/agreement.
+- Maintenance is a separate recurring service unless explicitly bundled in writing. Show the maintenance period, agreed fee, billing cadence, and due date.
+- The client remains owner of their domain, hosting and business accounts. Ventablk may manage/update them through authorised delegated access; provider costs and renewal responsibilities must be stated per project.
+- Do not present the 14-day post-launch defect-fix period as paid maintenance. It covers only reproducible defects against the agreed specification, not new features, content changes, third-party issues or ongoing support.
+
+## 3A. Recurring maintenance invoice rules
 
 - Generate one invoice per active client per agreed billing period; monthly by default for monthly maintenance contracts.
 - Show the service period explicitly, e.g. “Website maintenance — 1–31 October 2026”.
@@ -96,11 +103,11 @@ Examples of service descriptions may include website design, development milesto
 
 ## 5. Required details before generating a usable invoice
 
-### VentaBlk billing identity
-- Legal name / trading name to print.
-- Billing address, if required.
+### Ventablk billing identity
+- Confirm the correct issuer/trading name and contact details to print.
+- Billing address, if required for the issuer/transaction.
 - Business email and phone.
-- GST registration status and exact tax details, if applicable, confirmed by an accountant.
+- Confirm applicable invoice and tax requirements with an accountant; include registration/tax details only if applicable and verified.
 - Preferred invoice numbering format and current next invoice number.
 - Currency and payment terms.
 
@@ -123,7 +130,7 @@ Examples of service descriptions may include website design, development milesto
 
 The template is ready for real use only after:
 - [ ] VentaBlk logo/wordmark and brand styling are verified.
-- [ ] Billing identity and required tax treatment are confirmed.
+- [ ] Issuer identity and any applicable invoice/tax requirements are confirmed; no unsupported tax claim or invented registration detail is shown.
 - [ ] Invoice numbering and terms are approved.
 - [ ] Bank details and UPI ID are verified against the actual account.
 - [ ] A real invoice-specific QR is generated and scan-tested; payee, amount, and reference are checked.
