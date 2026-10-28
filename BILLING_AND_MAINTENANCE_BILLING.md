@@ -1,13 +1,13 @@
 # Billing, Invoices & Recurring Maintenance
 **VentaBlk Co. — Operating procedure**  
-**Status:** Draft for review  
+**Status:** Working operating procedure — apply per-client agreement  
 **Purpose:** Standardize project invoices and monthly website maintenance billing.
 
 ## 1. Core policy
 
 - Every paid project or service must have a written scope, agreed fee, billing schedule, and payment terms.
 - Create and send an invoice for each agreed billing milestone.
-- For recurring website maintenance, issue an invoice **every month** for the contracted service, unless the signed agreement explicitly defines another billing cadence.
+- For recurring website maintenance, invoice at the cadence agreed in writing (monthly only when the maintenance agreement says monthly). Maintenance is separate from the one-time build fee unless explicitly bundled.
 - Track invoice status: Draft → Issued → Part-paid (if applicable) → Paid / Overdue / Cancelled.
 - Never mark an invoice paid based only on a screenshot or client message; reconcile against the actual payment account/statement.
 - Do not silently change fees, tax treatment, scope, due dates, or payment details.
@@ -26,7 +26,7 @@ Each invoice should contain the applicable legally required details and, at mini
 - Terms for due date, late payment, disputes, and any applicable fees as agreed in contract.
 - QR code only when it encodes the verified intended payment destination and is readable on the final PDF/print.
 
-Tax, GST registration, invoice format, e-invoicing, and record-retention obligations depend on the agency's legal/tax circumstances. Confirm these with a qualified accountant; this checklist is not tax advice.
+Do not assume GST registration, exemption, or that no tax obligation applies. Use only the invoice/tax treatment applicable to the issuer and transaction after verification; obtain accounting advice when needed.
 
 ## 2A. Invoice visual direction (based on owner-provided references)
 
@@ -60,7 +60,7 @@ A static UPI QR can open a compatible payment app and prefill the payee and, whe
 
 Payment fees and rules can change. As of 15 October 2026, public reporting says a proposed merchant-fee framework for some higher-value UPI person-to-merchant payments has been postponed; confirm current applicability and charges directly with the business's bank/payment provider before choosing a QR arrangement. A direct bank-account UPI QR avoids payment-gateway platform fees, but it should not be described as guaranteed fee-free in every merchant scenario.
 
-## 4. Monthly website maintenance billing workflow
+## 4. Website maintenance billing workflow
 
 For every active maintenance client, maintain a billing entry with:
 - Client and billing contact.
@@ -70,7 +70,7 @@ For every active maintenance client, maintain a billing entry with:
 - Invoice number, sent date, amount due, payment status, and reconciliation date.
 - Next billing date and contract renewal/review date.
 
-Monthly procedure:
+For each agreed billing period:
 1. Review the active maintenance register at the start of the billing cycle.
 2. Confirm the client remains on the agreed plan and record any approved change request separately.
 3. Create an invoice for the correct service period and contracted fee.
@@ -85,6 +85,8 @@ Monthly procedure:
 **Important:** This document defines the workflow; it does not itself send invoices or create recurring payment transactions. Automation can be added later once billing software, recipients, billing dates, and payment provider are chosen.
 
 ## 5. Recommended records
+
+**Account ownership rule:** The client owns the domain, hosting and relevant business accounts. Ventablk may perform administration, updates and maintenance on the client's behalf using authorised delegated access. The proposal/maintenance schedule must state who pays third-party charges, who renews services, and the boundaries of Ventablk's authority. Do not ask clients to share account passwords in ordinary email or documents.
 
 Keep a private accounting record or approved invoicing platform as the financial source of truth. Do not keep confidential client financial records in a public agency OS repository.
 
@@ -106,12 +108,12 @@ When building the reusable invoice template:
 - Test QR scanning on both phone-screen and printed/exported PDF versions.
 - Keep a blank template separate from client-specific invoices.
 
-## 7. Decisions still required before automation
+## 7. Decisions still required before automation and routine invoicing
 
 - Legal billing identity and applicable tax details.
 - Preferred invoicing tool or PDF generation workflow.
 - Approved payment destination and QR format.
-- Monthly invoice day and payment terms per client.
+- Billing cadence and payment terms per client (monthly only if agreed).
 - Who sends invoices and who reconciles payments.
 - Where private invoices and the active maintenance register will be stored.
 - Whether automated email sending/reminders are desired and which authorized email account should send them.
