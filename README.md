@@ -37,7 +37,12 @@ This repository documents the repeatable processes and reusable standards for `v
 ## Client lifecycle documents
 
 - [Client information template](CLIENT_INFORMATION_TEMPLATE.md)
-- [Onboarding and kickoff pack](CLIENT_ONBOARDING_KICKOFF.md)
+- [Onboarding and kickoff pack — internal process](CLIENT_ONBOARDING_KICKOFF.md)
+- [Client welcome pack](CLIENT_WELCOME_PACK.md)
+- [Standalone welcome email](CLIENT_WELCOME_EMAIL.md)
+- [Client discovery questionnaire](CLIENT_DISCOVERY_QUESTIONNAIRE.md)
+- [Client asset and content collection checklist](CLIENT_ASSET_AND_CONTENT_CHECKLIST.md)
+- [Kickoff agenda and action summary](CLIENT_KICKOFF_AGENDA_AND_ACTIONS.md)
 - [Design and content approval workflow](DESIGN_CONTENT_APPROVAL_WORKFLOW.md)
 - [Proposal and statement of work](PROPOSAL_AND_SCOPE_OF_WORK.md)
 - [Launch, handover, and closeout](WEBSITE_HANDOVER_LAUNCH_CLOSEOUT.md)
