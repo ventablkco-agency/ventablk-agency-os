@@ -65,7 +65,7 @@
   </style>
 </head>
 <body>
-  <!-- TEMPLATE ONLY: replace placeholders, calculate totals, and insert a verified invoice-specific QR before issuing. -->
+  <!-- TEMPLATE ONLY: replace placeholders, confirm the agreed project milestone or separate maintenance period, calculate and reconcile totals, confirm applicable invoice/tax treatment, and insert a verified invoice-specific QR before issuing. Client owns domain/hosting accounts; Ventablk administers them only with authorisation. -->
   <main class="invoice">
     <header class="top">
       <div>
@@ -92,7 +92,7 @@
       <div class="party">
         <div class="label">From</div>
         <div class="party-name">ventablk.co</div>
-        <div class="muted">[Business address, if required]<br>[Business email]<br>[Business phone]</div>
+        <div class="muted">[Confirmed issuer / trading name details]<br>[Business address, if required]<br>[Business email]<br>[Business phone]</div>
       </div>
       <div class="party">
         <div class="label">Bill to</div>
@@ -104,15 +104,15 @@
     <table aria-label="Invoice line items">
       <thead><tr><th>Description</th><th>Service period</th><th class="num">Qty</th><th class="num">Rate (INR)</th><th>Amount (INR)</th></tr></thead>
       <tbody>
-        <tr><td>Website maintenance</td><td>[MMM YYYY]</td><td class="num">1</td><td class="num">[X,XXX.00]</td><td>[X,XXX.00]</td></tr>
-        <tr><td>Approved additional work (if any)</td><td>[MMM YYYY]</td><td class="num">[#]</td><td class="num">[X,XXX.00]</td><td>[X,XXX.00]</td></tr>
+        <tr><td>[Agreed project milestone or maintenance service]</td><td>[Service period or —]</td><td class="num">1</td><td class="num">[X,XXX.00]</td><td>[X,XXX.00]</td></tr>
+        <tr><td>[Approved additional work, if any]</td><td>[MMM YYYY]</td><td class="num">[#]</td><td class="num">[X,XXX.00]</td><td>[X,XXX.00]</td></tr>
       </tbody>
     </table>
 
     <div class="totals-wrap">
       <div class="totals">
         <div class="total-row"><span>Subtotal</span><span>₹ [X,XXX.00]</span></div>
-        <div class="total-row"><span>Tax (if applicable)</span><span>₹ [—]</span></div>
+        <!-- Include a tax row only when the applicable treatment has been confirmed. Do not assume registration, exemption, or non-applicability. -->
         <div class="total-row"><strong>Total</strong><strong>₹ [X,XXX.00]</strong></div>
         <div class="total-row"><span>Amount paid</span><span>₹ [0.00]</span></div>
         <div class="total-row balance"><span>BALANCE DUE (INR)</span><span>₹ [X,XXX.00]</span></div>
