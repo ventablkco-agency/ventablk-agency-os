@@ -49,6 +49,7 @@ This repository documents the repeatable processes and reusable standards for `v
 - [Kickoff agenda and action summary](CLIENT_KICKOFF_AGENDA_AND_ACTIONS.md)
 - [Design and content approval workflow](DESIGN_CONTENT_APPROVAL_WORKFLOW.md)
 - [Proposal and statement of work](PROPOSAL_AND_SCOPE_OF_WORK.md)
+- [Website service agreement template](SERVICE_AGREEMENT_TEMPLATE.md) — plain-English agreement aligned with revision, payment, ownership and maintenance defaults.
 - [Launch, handover, and closeout](WEBSITE_HANDOVER_LAUNCH_CLOSEOUT.md)
 - [Maintenance operations](WEBSITE_MAINTENANCE_OPERATIONS.md)
 - [Offboarding and cancellation](CLIENT_OFFBOARDING_CANCELLATION.md)
