@@ -3,6 +3,18 @@
 **Status:** Draft for review  
 **Use:** One copy per new hospital website client. This is an internal process guide; send only appropriate client-facing requests, not internal notes.
 
+## Client-facing onboarding assets
+
+Use these standalone templates alongside this internal operating guide. Copy client-specific completed versions only into the approved access-controlled client workspace:
+
+- [Client Welcome Pack](CLIENT_WELCOME_PACK.md)
+- [Standalone Welcome Email](CLIENT_WELCOME_EMAIL.md)
+- [Website Discovery Questionnaire](CLIENT_DISCOVERY_QUESTIONNAIRE.md)
+- [Asset & Content Collection Checklist](CLIENT_ASSET_AND_CONTENT_CHECKLIST.md)
+- [Kickoff Agenda & Action Summary](CLIENT_KICKOFF_AGENDA_AND_ACTIONS.md)
+
+The email draft in Section 8 below is retained as a fallback; use the standalone welcome email as the canonical client-facing version and keep the links and project facts consistent.
+
 ## 1. Before sending onboarding requests
 
 - [ ] Confirm client has accepted the proposal/statement of work.
