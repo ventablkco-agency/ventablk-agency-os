@@ -9,7 +9,11 @@ Use this index to find the correct operating document at each stage. Checklists 
 
 ## 2. Lead to kickoff
 - [ ] Follow [CLIENT_LIFECYCLE.md](CLIENT_LIFECYCLE.md) for the complete process.
-- [ ] Use [CLIENT_ONBOARDING_KICKOFF.md](CLIENT_ONBOARDING_KICKOFF.md) after commercial start conditions are met.
+- [ ] Use [CLIENT_ONBOARDING_KICKOFF.md](CLIENT_ONBOARDING_KICKOFF.md) as the internal process guide after commercial start conditions are met.
+- [ ] Send the [Client Welcome Pack](CLIENT_WELCOME_PACK.md) and [Welcome Email](CLIENT_WELCOME_EMAIL.md), replacing and verifying every placeholder.
+- [ ] Send the [Discovery Questionnaire](CLIENT_DISCOVERY_QUESTIONNAIRE.md) and track responses in the approved client workspace.
+- [ ] Use the [Asset & Content Collection Checklist](CLIENT_ASSET_AND_CONTENT_CHECKLIST.md) to track approved materials, permissions, owners, and dependencies.
+- [ ] Use the [Kickoff Agenda & Action Summary](CLIENT_KICKOFF_AGENDA_AND_ACTIONS.md) to run kickoff and circulate written actions.
 - [ ] Copy [CLIENT_INFORMATION_TEMPLATE.md](CLIENT_INFORMATION_TEMPLATE.md) into the appropriate client project and fill only client-confirmed facts.
 - [ ] Use [PROPOSAL_AND_SCOPE_OF_WORK.md](PROPOSAL_AND_SCOPE_OF_WORK.md) for the scope and commercial proposal; have binding terms reviewed appropriately.
 
