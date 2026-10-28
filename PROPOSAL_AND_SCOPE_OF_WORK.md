@@ -1,6 +1,6 @@
 # Website Proposal & Statement of Work Template
 **ventablk.co — AGENCY**  
-**Status:** Draft for review  
+**Status:** Reusable commercial template — owner decisions incorporated; project-specific fields still required  
 **Purpose:** Reusable commercial template for hospital and other business website projects. Adapt to each client and have legal/tax terms reviewed as appropriate before use.
 
 > This is an operational starting point, not legal or tax advice. Never send a proposal with unconfirmed legal identity, tax treatment, fees, dates, or promises. The accepted agreement and its terms should be reviewed by a qualified professional where appropriate.
@@ -84,23 +84,21 @@ Timeline begins when the agreed start conditions are met. Client feedback delays
 
 - **Project fee:** [INR amount]
 - **Currency:** [INR unless otherwise agreed]
-- **Tax treatment:** [Confirm with accountant; do not assume GST registration or tax applicability]
+- **Tax line:** Include only the treatment confirmed as applicable to this specific invoice; do not assume GST registration, exemption, or tax applicability.
 - **Payment milestones:** [e.g. deposit / design approval / launch]
 - **Invoice due terms:** [Number of days / date]
 - **Third-party costs:** [Who pays, approval process]
 - **Late payment / pause terms:** [Only if agreed in the contract and legally reviewed]
 - **Change requests:** [How extra work is estimated, approved, and invoiced]
 
-Example structure only (not a recommendation of a particular percentage):
-- Milestone 1 — [amount] upon accepted agreement / project start.
-- Milestone 2 — [amount] after approved design milestone.
-- Milestone 3 — [amount] before production launch / handover, as agreed.
+**Default payment structure, unless this proposal states otherwise:** 50% advance before work begins and 50% before production launch. Show the actual currency amounts and due triggers in every proposal. If a different schedule is agreed, replace this default explicitly. Do not start work until the advance has cleared.
 
 All amounts, tax lines, due dates, and payment instructions must be checked before issue. The invoice must use the same agreed fee and milestone terms as the accepted proposal.
 
 ## 8. Revision and change-control policy
 
-- Included design revision rounds: [Number] at [defined stages].
+- **Included design revisions: 2 consolidated rounds** at the stages stated in this proposal. The client should provide one combined feedback list per round.
+- Additional rounds, a change in approved direction, new pages, new features, or new integrations are not included unless listed; quote them separately and get written approval before starting.
 - Included content corrections: [Scope and time window].
 - A revision round means one consolidated list from the designated client approver.
 - A defect is a failure to meet the accepted specification; a new feature, new page, or changed direction is a change request.
@@ -132,14 +130,13 @@ Do not promise transfer of third-party assets beyond their licenses. Do not with
 
 ## 11. Hosting, warranty, and ongoing support
 
-- **Hosting arrangement:** [Client-owned / agency-managed / other]
-- **Included post-launch correction period:** [Duration and precise scope]
-- **Maintenance required or optional:** [State clearly]
-- **Backups, uptime monitoring, security updates, content edits:** [Included/excluded]
-- **Support hours and response targets:** [Only if actually deliverable]
-- **Emergency coverage:** [Explicitly included or excluded]
+- **Domain/hosting arrangement:** Decide per project and state the account owner, payer, renewals and agency responsibilities here.
+- **Post-launch defect-fix period: 14 calendar days** from the production launch date, limited to reproducible defects where delivered work fails to match the approved scope/specification. It excludes new features, new content, third-party outages, client changes, and ongoing maintenance.
+- **Maintenance:** Separate from the one-time project fee unless this proposal explicitly says otherwise.
+- **Maintenance tasks:** List the exact included tasks, frequency, exclusions, monthly/period fee, response expectations and payment due date. Do not promise uptime, emergency coverage or response times unless agreed and realistically deliverable.
+- **Account ownership:** The client owns the domain, hosting and business accounts. Ventablk may administer or update them on the client's behalf using authorised, delegated access. The proposal must specify who pays provider/subscription charges and who handles renewals. Do not transfer account ownership to Ventablk merely because Ventablk operates the accounts.
 
-A maintenance plan is separate from the one-time project unless explicitly bundled. Define monthly fee, service period, scope, exclusions, response targets, payment terms, renewal, cancellation, and access arrangements in a separate schedule or addendum.
+For any maintenance arrangement, record the scope, fee, billing frequency, service period, exclusions, renewal/cancellation process and authorised access in this proposal or a separate written maintenance schedule.
 
 ## 12. Acceptance criteria
 
@@ -173,7 +170,9 @@ Include only real project risks. Typical examples: late content, unverified clin
 - [ ] Stack, hosting, form behavior, data handling, and third-party costs are described accurately.
 - [ ] Timeline and client dependencies are realistic.
 - [ ] Fee, payment milestones, tax treatment, and invoice terms agree with the intended contract.
-- [ ] Maintenance is explicitly priced and scoped if offered.
+- [ ] Maintenance is clearly separate, with exact tasks, price, billing frequency and exclusions if offered.
+- [ ] Client account ownership and Ventablk's delegated administration role are clear.
+- [ ] The 14-day defect-fix period is distinguished from maintenance and new work.
 - [ ] Ownership, licenses, access, acceptance, change control, and termination are covered by the signed agreement.
 - [ ] Claims are evidence-based; no guaranteed rankings or unsupported outcomes.
 - [ ] Legal/tax review completed where needed.
